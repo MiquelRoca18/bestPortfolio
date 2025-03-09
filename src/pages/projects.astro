@@ -1,0 +1,35 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import TrophyCase from '../components/Trophies/TrophyCase';
+---
+
+<MainLayout title="Trofeos Ganados">
+  <div class="py-12 px-4">
+    <h1 class="text-4xl font-bold text-center mb-6">Mis Trofeos Ganados</h1>
+    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
+      Estos son los proyectos que he desarrollado, mis "trofeos" en el campo del desarrollo.
+      Cada uno representa un desafío superado y un conjunto de habilidades aplicadas.
+    </p>
+    
+    <div class="mb-16">
+      <TrophyCase client:visible />
+    </div>
+    
+    <div class="max-w-3xl mx-auto mt-16 bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-bold mb-6 text-center">¿Listo para el próximo trofeo?</h2>
+      <p class="text-center mb-8">
+        Estoy siempre buscando nuevos desafíos para seguir creciendo profesionalmente.
+        Si tienes un proyecto en mente, ¡me encantaría escucharlo!
+      </p>
+      
+      <div class="text-center">
+        <a 
+          href="/contact" 
+          class="inline-block bg-team-primary text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-blue-700 transition"
+        >
+          Contactar ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</MainLayout>

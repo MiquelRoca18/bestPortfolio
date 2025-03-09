@@ -1,0 +1,99 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PlayerCard from '../components/Player/PlayerCard';
+---
+
+<MainLayout title="Perfil del Jugador">
+  <div class="py-12 px-4">
+    <h1 class="text-4xl font-bold text-center mb-6">Perfil del Jugador</h1>
+    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
+      Conoce más sobre mi perfil profesional y mi estilo como "El Futbolista del Código". 
+      Descubre mis fortalezas, experiencia y especialización.
+    </p>
+    
+    <div class="mb-16">
+      <PlayerCard client:visible />
+    </div>
+    
+    <div class="max-w-3xl mx-auto mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-2xl font-bold mb-4 text-team-primary">Tecnologías Favoritas</h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-bold mb-2">Frontend</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Tailwind CSS</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Next.js</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Redux</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-bold mb-2">Backend</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Node.js</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Express</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">MongoDB</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">PostgreSQL</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">GraphQL</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-bold mb-2">DevOps & Herramientas</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Git</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Docker</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">CI/CD</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">AWS</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Jest</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-2xl font-bold mb-4 text-team-primary">Intereses</h2>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">⚡</div>
+              <div>
+                <div class="font-semibold">Desarrollo web moderno</div>
+                <p class="text-sm text-gray-700">Explorando las últimas tecnologías y patrones arquitectónicos.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">⚡</div>
+              <div>
+                <div class="font-semibold">UX/UI Design</div>
+                <p class="text-sm text-gray-700">Creando interfaces intuitivas y experiencias de usuario memorables.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">⚡</div>
+              <div>
+                <div class="font-semibold">Rendimiento y optimización</div>
+                <p class="text-sm text-gray-700">Mejorando la velocidad y eficiencia de aplicaciones web.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">⚡</div>
+              <div>
+                <div class="font-semibold">Inteligencia Artificial</div>
+                <p class="text-sm text-gray-700">Implementando soluciones de IA y ML en aplicaciones web.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">⚡</div>
+              <div>
+                <div class="font-semibold">Open Source</div>
+                <p class="text-sm text-gray-700">Contribuyendo a proyectos de código abierto y comunidades.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

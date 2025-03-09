@@ -1,0 +1,46 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Timeline from '../components/Experience/Timeline';
+---
+
+<MainLayout title="Partidos Jugados">
+  <div class="py-12 px-4">
+    <h1 class="text-4xl font-bold text-center mb-6">Mis Partidos Jugados</h1>
+    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
+      Como futbolista del código, cada experiencia laboral es un partido importante
+      donde he podido demostrar mis habilidades y crecer profesionalmente.
+    </p>
+    
+    <div class="mb-16">
+      <Timeline client:visible />
+    </div>
+    
+    <div class="max-w-3xl mx-auto mt-16">
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold mb-6">Estadísticas del Jugador</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-team-primary mb-2">5+</div>
+            <div class="text-gray-700">Años de experiencia</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-5xl font-bold text-team-primary mb-2">30+</div>
+            <div class="text-gray-700">Proyectos completados</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-5xl font-bold text-team-primary mb-2">15+</div>
+            <div class="text-gray-700">Tecnologías dominadas</div>
+          </div>
+        </div>
+        
+        <p class="text-center text-gray-700">
+          Con cada "partido" he ido adquiriendo experiencia y mejorando mis habilidades,
+          siempre en búsqueda de la excelencia y el crecimiento profesional constante.
+        </p>
+      </div>
+    </div>
+  </div>
+</MainLayout>

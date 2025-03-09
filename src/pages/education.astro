@@ -1,0 +1,78 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { AcademyList } from '../components/Player/AcademyCard';
+---
+
+<MainLayout title="Academia del Jugador">
+  <div class="py-12 px-4">
+    <h1 class="text-4xl font-bold text-center mb-6">Mi Academia de Formación</h1>
+    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
+      Todo futbolista de élite requiere una formación rigurosa. Estas son las "academias"
+      que me han ayudado a desarrollar mis habilidades como desarrollador.
+    </p>
+    
+    <div class="mb-16">
+      <AcademyList client:visible />
+    </div>
+    
+    <div class="max-w-3xl mx-auto mt-16 bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-bold mb-6 text-center">Formación Continua</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-team-primary">Cursos Recientes</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">▶</div>
+              <div>
+                <div class="font-semibold">AWS Cloud Practitioner</div>
+                <div class="text-sm text-gray-600">Cloud Academy, 2023</div>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">▶</div>
+              <div>
+                <div class="font-semibold">React Native Advanced Patterns</div>
+                <div class="text-sm text-gray-600">Frontend Masters, 2023</div>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">▶</div>
+              <div>
+                <div class="font-semibold">TypeScript Avanzado</div>
+                <div class="text-sm text-gray-600">Platzi, 2022</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-team-primary">Certificaciones</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">🏅</div>
+              <div>
+                <div class="font-semibold">MongoDB Certified Developer</div>
+                <div class="text-sm text-gray-600">MongoDB, 2022</div>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">🏅</div>
+              <div>
+                <div class="font-semibold">AWS Certified Developer</div>
+                <div class="text-sm text-gray-600">Amazon Web Services, 2022</div>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="text-team-secondary mr-2">🏅</div>
+              <div>
+                <div class="font-semibold">Professional Scrum Master I</div>
+                <div class="text-sm text-gray-600">Scrum.org, 2021</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

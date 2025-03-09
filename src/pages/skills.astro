@@ -1,0 +1,46 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SkillsField from '../components/Field/SkillsField';
+---
+
+<MainLayout title="Jugadas Especiales">
+  <div class="py-12 px-4">
+    <h1 class="text-4xl font-bold text-center mb-6">Mis Jugadas Especiales</h1>
+    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
+      Como todo buen futbolista, mi valor en el campo depende de mis habilidades técnicas.
+      Explora el terreno de juego para descubrir mis "jugadas especiales".
+    </p>
+    
+    <div class="mb-16">
+      <SkillsField client:visible />
+    </div>
+    
+    <div class="mt-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Entrenamiento Continuo</h2>
+      <p class="mb-4">
+        Como todo profesional dedicado, estoy constantemente entrenando y mejorando mis habilidades.
+        Estas son algunas tecnologías que estoy aprendiendo actualmente:
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-5xl mb-4 text-center">🌐</div>
+          <h3 class="text-xl font-bold mb-2 text-center">AWS</h3>
+          <p class="text-gray-700">Expandiendo mis conocimientos en servicios cloud para arquitecturas escalables.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-5xl mb-4 text-center">🤖</div>
+          <h3 class="text-xl font-bold mb-2 text-center">Machine Learning</h3>
+          <p class="text-gray-700">Aprendiendo a implementar modelos básicos para enriquecer aplicaciones web.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-5xl mb-4 text-center">🔐</div>
+          <h3 class="text-xl font-bold mb-2 text-center">Ciberseguridad</h3>
+          <p class="text-gray-700">Mejorando mis prácticas para proteger aplicaciones web contra vulnerabilidades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
