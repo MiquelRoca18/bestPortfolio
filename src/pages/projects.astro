@@ -1,35 +1,184 @@
 ---
+// src/pages/projects.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import TrophyCase from '../components/Trophies/TrophyCase';
 ---
 
 <MainLayout title="Trofeos Ganados">
-  <div class="py-12 px-4">
-    <h1 class="text-4xl font-bold text-center mb-6">Mis Trofeos Ganados</h1>
-    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
-      Estos son los proyectos que he desarrollado, mis "trofeos" en el campo del desarrollo.
-      Cada uno representa un desafío superado y un conjunto de habilidades aplicadas.
-    </p>
-    
-    <div class="mb-16">
-      <TrophyCase client:visible />
+  <div class="bg-gradient-to-b from-gray-50 to-white">
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h1 class="text-5xl font-bold mb-6">Trofeos Ganados</h1>
+        <p class="text-xl text-gray-600">
+          Cada proyecto es como un partido ganado en mi carrera como desarrollador.
+          Aquí están mis trofeos más significativos.
+        </p>
+      </div>
+      
+      <!-- Decoración inspirada en fútbol -->
+      <div class="relative py-8">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div class="w-40 h-1 bg-gradient-to-r from-team-primary via-team-secondary to-team-primary rounded-full"></div>
+        </div>
+      </div>
+      
+      <!-- Vista de trofeos principales -->
+      <TrophyCase 
+        client:visible 
+        projects={[
+          {
+            title: 'Plataforma E-learning',
+            category: 'Aplicación Web',
+            description: 'Desarrollo de una plataforma completa para cursos online con sistema de pagos, gestión de contenido y analíticas en tiempo real.',
+            link: '#',
+            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API']
+          },
+          {
+            title: 'App de Gestión Financiera',
+            category: 'Aplicación Móvil',
+            description: 'Aplicación móvil para gestión de finanzas personales con visualización de datos, seguimiento de presupuesto y alertas personalizadas.',
+            link: '#',
+            technologies: ['React Native', 'Firebase', 'Redux']
+          },
+          {
+            title: 'Dashboard Empresarial',
+            category: 'Plataforma SaaS',
+            description: 'Dashboard interactivo para análisis de datos empresariales con múltiples integraciones y reportes personalizados.',
+            link: '#',
+            technologies: ['Vue.js', 'Express', 'PostgreSQL', 'Docker']
+          },
+          {
+            title: 'E-commerce Multivendor',
+            category: 'Aplicación Web',
+            description: 'Plataforma de comercio electrónico multivendedor con carrito de compras, pasarela de pagos y panel de administración.',
+            link: '#',
+            technologies: ['Next.js', 'GraphQL', 'MongoDB', 'Tailwind CSS']
+          },
+          {
+            title: 'API RESTful para Gestión de Recursos',
+            category: 'Backend',
+            description: 'Desarrollo de una API completa para gestión de recursos con autenticación, autorización y documentación exhaustiva.',
+            link: '#',
+            technologies: ['Node.js', 'Express', 'JWT', 'Swagger']
+          },
+          {
+            title: 'App de Seguimiento Fitness',
+            category: 'Aplicación Móvil',
+            description: 'Aplicación móvil para seguimiento de rutinas de ejercicio, nutrición y progreso personal con sincronización en la nube.',
+            link: '#',
+            technologies: ['Flutter', 'Firebase', 'RESTful API']
+          }
+        ]}
+      />
     </div>
     
-    <div class="max-w-3xl mx-auto mt-16 bg-white p-8 rounded-lg shadow-lg">
-      <h2 class="text-3xl font-bold mb-6 text-center">¿Listo para el próximo trofeo?</h2>
-      <p class="text-center mb-8">
-        Estoy siempre buscando nuevos desafíos para seguir creciendo profesionalmente.
-        Si tienes un proyecto en mente, ¡me encantaría escucharlo!
-      </p>
+    <!-- Sección de Premios y Reconocimientos -->
+    <div class="bg-gray-100 py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Premios y Reconocimientos</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Premio 1 -->
+          <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col items-center text-center transform transition-transform hover:scale-105">
+            <div class="w-20 h-20 flex items-center justify-center bg-yellow-100 rounded-full mb-4">
+              <span class="text-4xl">🥇</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Hackathon Frontend 2023</h3>
+            <p class="text-gray-600">Primer lugar en hackathon de desarrollo frontend organizado por [Organización].</p>
+          </div>
+          
+          <!-- Premio 2 -->
+          <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col items-center text-center transform transition-transform hover:scale-105">
+            <div class="w-20 h-20 flex items-center justify-center bg-yellow-100 rounded-full mb-4">
+              <span class="text-4xl">🏅</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Mejor Solución Tecnológica</h3>
+            <p class="text-gray-600">Reconocimiento a la mejor solución tecnológica para [problema específico].</p>
+          </div>
+          
+          <!-- Premio 3 -->
+          <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col items-center text-center transform transition-transform hover:scale-105">
+            <div class="w-20 h-20 flex items-center justify-center bg-yellow-100 rounded-full mb-4">
+              <span class="text-4xl">🏆</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Desarrollador del Año</h3>
+            <p class="text-gray-600">Reconocimiento por excelencia y contribución excepcional en [Empresa].</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sección Testimonios - como comentaristas deportivos -->
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center mb-12">Lo Que Dicen del Jugador</h2>
       
-      <div class="text-center">
-        <a 
-          href="/contact" 
-          class="inline-block bg-team-primary text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-blue-700 transition"
-        >
-          Contactar ahora
-        </a>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Testimonio 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-team-primary">
+          <div class="mb-4 relative">
+            <div class="absolute -top-3 -left-3 text-4xl text-gray-200">❝</div>
+            <p class="text-gray-600 italic relative z-10 pl-4">
+              Carlos es un desarrollador excepcional. Su capacidad para entender los requisitos del proyecto
+              y convertirlos en soluciones efectivas es impresionante. Definitivamente volveremos a trabajar con él.
+            </p>
+          </div>
+          <div class="flex items-center mt-4">
+            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+              JD
+            </div>
+            <div class="ml-4">
+              <div class="font-bold">Juan Díaz</div>
+              <div class="text-gray-500 text-sm">CEO de TechCompany</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonio 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-team-secondary">
+          <div class="mb-4 relative">
+            <div class="absolute -top-3 -left-3 text-4xl text-gray-200">❝</div>
+            <p class="text-gray-600 italic relative z-10 pl-4">
+              Trabajar con Carlos ha sido una experiencia increíble. Su atención al detalle y su enfoque
+              en la experiencia de usuario han marcado la diferencia en nuestro proyecto.
+            </p>
+          </div>
+          <div class="flex items-center mt-4">
+            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+              MR
+            </div>
+            <div class="ml-4">
+              <div class="font-bold">María Rodríguez</div>
+              <div class="text-gray-500 text-sm">Project Manager en StartupX</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </MainLayout>
+
+<style>
+  /* Efecto de brillo para los premios */
+  .bg-yellow-100 {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bg-yellow-100::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes shine {
+    0% { transform: rotate(45deg) translateX(-100%); }
+    50% { transform: rotate(45deg) translateX(100%); }
+    100% { transform: rotate(45deg) translateX(100%); }
+  }
+</style>

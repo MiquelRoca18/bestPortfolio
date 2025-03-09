@@ -1,46 +1,151 @@
 ---
+// src/pages/skills.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import SkillsField from '../components/Field/SkillsField';
 ---
 
 <MainLayout title="Jugadas Especiales">
-  <div class="py-12 px-4">
-    <h1 class="text-4xl font-bold text-center mb-6">Mis Jugadas Especiales</h1>
-    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
-      Como todo buen futbolista, mi valor en el campo depende de mis habilidades técnicas.
-      Explora el terreno de juego para descubrir mis "jugadas especiales".
-    </p>
-    
-    <div class="mb-16">
-      <SkillsField client:visible />
+  <div class="container mx-auto px-4 py-12">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h1 class="text-5xl font-bold mb-6">Mis Jugadas Especiales</h1>
+      <p class="text-xl text-gray-600">
+        Como todo buen futbolista del código, domino diversas técnicas y tecnologías que aplico
+        según la estrategia de cada proyecto. Explora el campo para conocer mis habilidades.
+      </p>
     </div>
     
-    <div class="mt-16 max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">Entrenamiento Continuo</h2>
-      <p class="mb-4">
-        Como todo profesional dedicado, estoy constantemente entrenando y mejorando mis habilidades.
-        Estas son algunas tecnologías que estoy aprendiendo actualmente:
-      </p>
+    <!-- Campo interactivo con las habilidades -->
+    <div class="my-16">
+      <SkillsField client:load />
+    </div>
+    
+    <!-- Taxonomía de habilidades -->
+    <div class="mt-24 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Mi Arsenal Técnico</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <div class="text-5xl mb-4 text-center">🌐</div>
-          <h3 class="text-xl font-bold mb-2 text-center">AWS</h3>
-          <p class="text-gray-700">Expandiendo mis conocimientos en servicios cloud para arquitecturas escalables.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Categoría: Frontend -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+          <div class="bg-blue-600 text-white p-4">
+            <h3 class="text-xl font-bold flex items-center">
+              <span class="mr-2">⚡</span> Frontend
+            </h3>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                <span>React & React Native</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                <span>Vue.js</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                <span>HTML5 & CSS3</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                <span>Tailwind CSS</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                <span>JavaScript/TypeScript</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                <span>Redux/Zustand</span>
+              </li>
+            </ul>
+          </div>
         </div>
         
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <div class="text-5xl mb-4 text-center">🤖</div>
-          <h3 class="text-xl font-bold mb-2 text-center">Machine Learning</h3>
-          <p class="text-gray-700">Aprendiendo a implementar modelos básicos para enriquecer aplicaciones web.</p>
+        <!-- Categoría: Backend -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+          <div class="bg-green-600 text-white p-4">
+            <h3 class="text-xl font-bold flex items-center">
+              <span class="mr-2">🔧</span> Backend
+            </h3>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span>Node.js & Express</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span>MongoDB & Mongoose</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span>PostgreSQL & Sequelize</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span>GraphQL</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span>RESTful APIs</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span>JWT & Auth</span>
+              </li>
+            </ul>
+          </div>
         </div>
         
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <div class="text-5xl mb-4 text-center">🔐</div>
-          <h3 class="text-xl font-bold mb-2 text-center">Ciberseguridad</h3>
-          <p class="text-gray-700">Mejorando mis prácticas para proteger aplicaciones web contra vulnerabilidades.</p>
+        <!-- Categoría: DevOps -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+          <div class="bg-purple-600 text-white p-4">
+            <h3 class="text-xl font-bold flex items-center">
+              <span class="mr-2">🚀</span> DevOps
+            </h3>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
+                <span>Git & GitHub</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
+                <span>Docker & Containerization</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
+                <span>CI/CD Pipelines</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
+                <span>AWS / Google Cloud</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
+                <span>Netlify / Vercel</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
+                <span>Testing & QA</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </MainLayout>
+
+<style>
+  /* Añadir algunos estilos especiales para las listas */
+  li {
+    transition: transform 0.2s;
+  }
+  
+  li:hover {
+    transform: translateX(5px);
+  }
+</style>

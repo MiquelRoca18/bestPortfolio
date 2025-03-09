@@ -7,46 +7,146 @@
     @apply bg-gray-50 text-gray-900 font-sans;
   }
   h1 {
-    @apply text-4xl font-bold mb-6;
+    @apply text-4xl md:text-5xl font-bold mb-6 font-poppins;
   }
   h2 {
-    @apply text-3xl font-bold mb-4;
+    @apply text-3xl font-bold mb-4 font-poppins;
   }
   h3 {
-    @apply text-2xl font-bold mb-3;
+    @apply text-2xl font-bold mb-3 font-poppins;
   }
 }
 
 @layer components {
+  /* Tarjeta de jugador de fútbol estilo FIFA */
   .player-card {
-    @apply bg-white rounded-lg shadow-lg overflow-hidden border-2 border-team-primary;
+    @apply relative bg-gradient-to-br from-team-primary to-blue-900 text-white rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl transform transition-transform hover:scale-105;
+    height: 400px;
+    width: 300px;
   }
   
+  .player-card-content {
+    @apply absolute inset-0 p-6 flex flex-col;
+  }
+  
+  .player-card-image {
+    @apply relative h-48 mb-4 flex justify-center;
+  }
+  
+  .player-card-rating {
+    @apply absolute top-4 left-4 bg-yellow-500 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl;
+  }
+  
+  .player-card-position {
+    @apply absolute top-4 right-4 bg-white text-team-primary font-bold px-2 py-1 rounded-md text-sm;
+  }
+  
+  .player-card-stats {
+    @apply grid grid-cols-3 gap-2 text-sm;
+  }
+  
+  .player-card-stat {
+    @apply flex flex-col items-center;
+  }
+  
+  .player-card-stat-value {
+    @apply text-xl font-bold;
+  }
+  
+  .player-card-stat-label {
+    @apply text-xs opacity-80;
+  }
+  
+  /* Campo de fútbol */
   .football-field {
-    @apply w-full max-w-4xl mx-auto relative bg-field-green rounded-lg overflow-hidden;
+    @apply w-full max-w-4xl mx-auto relative rounded-xl overflow-hidden shadow-2xl;
+    aspect-ratio: 4/3;
+    background-image: linear-gradient(to right, #2e8b57, #3a9e64, #46b171);
+    background-size: 100% 100%;
   }
   
+  .field-lines {
+    @apply absolute inset-0 z-10;
+  }
+  
+  /* Habilidad en el campo estilo jugada especial */
   .skill-move {
-    @apply absolute flex flex-col items-center justify-center cursor-pointer transition-all;
+    @apply absolute flex flex-col items-center justify-center cursor-pointer transition-all duration-300 z-20;
   }
   
-  .skill-move.active {
-    @apply ring-4 ring-team-secondary;
+  .skill-move-icon {
+    @apply w-14 h-14 rounded-full flex items-center justify-center bg-white shadow-lg transform transition-transform;
   }
   
+  .skill-move-label {
+    @apply mt-2 px-2 py-1 bg-white rounded-md text-xs font-bold opacity-0 transition-opacity duration-300;
+  }
+  
+  .skill-move:hover .skill-move-icon {
+    @apply scale-110;
+  }
+  
+  .skill-move:hover .skill-move-label {
+    @apply opacity-100;
+  }
+  
+  .skill-move.active .skill-move-icon {
+    @apply ring-4 ring-yellow-400 scale-110;
+  }
+  
+  /* Trofeos */
   .trophy-case {
     @apply grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
   }
+  
+  .trophy-item {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .trophy-header {
+    @apply p-4 bg-gradient-to-r from-yellow-500 to-yellow-400 text-white font-bold;
+  }
+  
+  .trophy-content {
+    @apply p-4;
+  }
+  
+  /* Botones con estilo de equipo */
+  .btn-primary {
+    @apply bg-team-primary hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-team-secondary hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  /* Animaciones para elementos */
+  .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
-/* Media queries for responsive design */
+/* Media queries para diseño responsive */
 @media (max-width: 768px) {
   .football-field {
-    transform: scale(0.8);
+    transform: scale(0.9);
     margin: 0 auto;
   }
   
   .skill-move {
-    transform: scale(0.8);
+    transform: scale(0.9);
+  }
+  
+  .skill-move-icon {
+    @apply w-12 h-12;
   }
 }

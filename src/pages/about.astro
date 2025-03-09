@@ -1,99 +1,174 @@
 ---
+// src/pages/about.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import PlayerCard from '../components/Player/PlayerCard';
 ---
 
 <MainLayout title="Perfil del Jugador">
-  <div class="py-12 px-4">
-    <h1 class="text-4xl font-bold text-center mb-6">Perfil del Jugador</h1>
-    <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
-      Conoce más sobre mi perfil profesional y mi estilo como "El Futbolista del Código". 
-      Descubre mis fortalezas, experiencia y especialización.
-    </p>
-    
-    <div class="mb-16">
-      <PlayerCard client:visible />
+  <div class="container mx-auto px-4 py-16">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h1 class="text-5xl font-bold mb-6">Mi Perfil de Jugador</h1>
+      <p class="text-xl text-gray-600">
+        Conoce mi historia, mis valores y cómo me he convertido en el futbolista del 
+        código que soy ahora.
+      </p>
     </div>
     
-    <div class="max-w-3xl mx-auto mt-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-4 text-team-primary">Tecnologías Favoritas</h2>
-          <div class="space-y-4">
+    <div class="flex flex-col lg:flex-row gap-10 items-center mb-16">
+      <!-- FIFA-Style Player Card -->
+      <div class="lg:w-1/3 flex justify-center">
+        <PlayerCard 
+          client:load
+          name="Carlos Rodríguez"
+          position="DEV"
+          rating="93"
+          skills={[
+            { value: 95, label: 'CÓDIGO' },
+            { value: 92, label: 'DISEÑO' },
+            { value: 94, label: 'EQUIPO' }
+          ]}
+        />
+      </div>
+      
+      <!-- Player Profile Info -->
+      <div class="lg:w-2/3">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">
+          Perfil Técnico
+        </h2>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 class="font-bold mb-2">Frontend</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Tailwind CSS</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Next.js</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Redux</span>
-              </div>
+              <h3 class="font-bold text-lg mb-3 text-team-primary">Datos Personales</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-primary flex items-center justify-center text-white text-xs">✓</span>
+                  <span class="text-gray-700"><strong>Nombre:</strong> Carlos Rodríguez</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-primary flex items-center justify-center text-white text-xs">✓</span>
+                  <span class="text-gray-700"><strong>Edad:</strong> 28 años</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-primary flex items-center justify-center text-white text-xs">✓</span>
+                  <span class="text-gray-700"><strong>Ubicación:</strong> Madrid, España</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-primary flex items-center justify-center text-white text-xs">✓</span>
+                  <span class="text-gray-700"><strong>Rol:</strong> Desarrollador Full-Stack</span>
+                </li>
+              </ul>
             </div>
+            
             <div>
-              <h3 class="font-bold mb-2">Backend</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Node.js</span>
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Express</span>
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">MongoDB</span>
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">PostgreSQL</span>
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">GraphQL</span>
-              </div>
-            </div>
-            <div>
-              <h3 class="font-bold mb-2">DevOps & Herramientas</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Git</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Docker</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">CI/CD</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">AWS</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Jest</span>
-              </div>
+              <h3 class="font-bold text-lg mb-3 text-team-primary">Características Técnicas</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-secondary flex items-center justify-center text-white text-xs">★</span>
+                  <span class="text-gray-700">Código limpio y eficiente</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-secondary flex items-center justify-center text-white text-xs">★</span>
+                  <span class="text-gray-700">Soluciones creativas a problemas complejos</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-secondary flex items-center justify-center text-white text-xs">★</span>
+                  <span class="text-gray-700">Adaptabilidad a nuevas tecnologías</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-team-secondary flex items-center justify-center text-white text-xs">★</span>
+                  <span class="text-gray-700">Comunicación efectiva en equipo</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
         
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-4 text-team-primary">Intereses</h2>
-          <ul class="space-y-3">
-            <li class="flex items-start">
-              <div class="text-team-secondary mr-2">⚡</div>
-              <div>
-                <div class="font-semibold">Desarrollo web moderno</div>
-                <p class="text-sm text-gray-700">Explorando las últimas tecnologías y patrones arquitectónicos.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <div class="text-team-secondary mr-2">⚡</div>
-              <div>
-                <div class="font-semibold">UX/UI Design</div>
-                <p class="text-sm text-gray-700">Creando interfaces intuitivas y experiencias de usuario memorables.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <div class="text-team-secondary mr-2">⚡</div>
-              <div>
-                <div class="font-semibold">Rendimiento y optimización</div>
-                <p class="text-sm text-gray-700">Mejorando la velocidad y eficiencia de aplicaciones web.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <div class="text-team-secondary mr-2">⚡</div>
-              <div>
-                <div class="font-semibold">Inteligencia Artificial</div>
-                <p class="text-sm text-gray-700">Implementando soluciones de IA y ML en aplicaciones web.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <div class="text-team-secondary mr-2">⚡</div>
-              <div>
-                <div class="font-semibold">Open Source</div>
-                <p class="text-sm text-gray-700">Contribuyendo a proyectos de código abierto y comunidades.</p>
-              </div>
-            </li>
-          </ul>
+        <!-- Player Bio -->
+        <div class="bg-gradient-to-r from-team-primary to-blue-800 text-white rounded-xl shadow-lg p-6">
+          <h3 class="font-bold text-xl mb-4">Mi Historia</h3>
+          <p class="mb-4">
+            Mi pasión por el desarrollo comenzó hace más de 8 años cuando creé mi primera página web. 
+            Desde entonces, he evolucionado constantemente, aprendiendo nuevas tecnologías y mejorando 
+            mis habilidades para convertirme en un desarrollador versátil y efectivo.
+          </p>
+          <p>
+            Como el futbolista del código, veo cada proyecto como un partido donde la estrategia, 
+            el trabajo en equipo y la excelencia técnica son fundamentales para alcanzar el éxito. 
+            Mi enfoque combina creatividad, precisión y una mentalidad orientada a resultados.
+          </p>
         </div>
       </div>
+    </div>
+    
+    <!-- Valores como Jugador -->
+    <div class="my-20">
+      <h2 class="text-3xl font-bold text-center mb-12">Mis Valores como Jugador</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Valor 1 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:shadow-xl hover:-translate-y-1">
+          <div class="h-2 bg-blue-600"></div>
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-4 mx-auto">
+              <span class="text-2xl">🤝</span>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3">Trabajo en Equipo</h3>
+            <p class="text-gray-600 text-center">
+              Creo en el poder de la colaboración y la comunicación efectiva para lograr resultados excepcionales.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Valor 2 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:shadow-xl hover:-translate-y-1">
+          <div class="h-2 bg-green-600"></div>
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4 mx-auto">
+              <span class="text-2xl">🔄</span>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3">Mejora Continua</h3>
+            <p class="text-gray-600 text-center">
+              Busco constantemente aprender y mejorar mis habilidades para ofrecer soluciones de mayor calidad.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Valor 3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:shadow-xl hover:-translate-y-1">
+          <div class="h-2 bg-purple-600"></div>
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mb-4 mx-auto">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3">Orientación a Resultados</h3>
+            <p class="text-gray-600 text-center">
+              Me enfoco en entregar soluciones que generen valor real y cumplan con los objetivos establecidos.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Valor 4 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:shadow-xl hover:-translate-y-1">
+          <div class="h-2 bg-yellow-500"></div>
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center mb-4 mx-auto">
+              <span class="text-2xl">💡</span>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3">Creatividad</h3>
+            <p class="text-gray-600 text-center">
+              Aporto soluciones innovadoras y un enfoque creativo para resolver problemas complejos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CTA Final -->
+    <div class="text-center mt-16 mb-8">
+      <a href="/contact" class="inline-block bg-team-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1">
+        ¿Quieres ficharme para tu equipo?
+      </a>
     </div>
   </div>
 </MainLayout>

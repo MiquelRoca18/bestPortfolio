@@ -1,42 +1,91 @@
 ---
+// src/pages/index.astro
 import MainLayout from '../layouts/MainLayout.astro';
+import HeroSection from '../components/Hero/HeroSection';
+import StatsSection from '../components/Stats/StatsSection';
+import SkillsField from '../components/Field/SkillsField';
+import TrophyCase from '../components/Trophies/TrophyCase';
 ---
 
 <MainLayout title="Presentación">
-  <div class="text-center py-12">
-    <h1 class="text-5xl font-bold mb-4">¡Bienvenido a mi Campo!</h1>
-    <p class="text-xl mb-8">Desarrollador Full-Stack con pasión por el código limpio y eficiente</p>
-    
-    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="w-full md:w-1/3">
-          <!-- Placeholder para la imagen del jugador -->
-          <div class="bg-gray-200 rounded-full h-64 w-64 mx-auto flex items-center justify-center">
-            <span class="text-6xl">👨‍💻</span>
-          </div>
-        </div>
-        
-        <div class="w-full md:w-2/3 text-left">
-          <h2 class="text-3xl font-bold mb-4">El Futbolista del Código</h2>
-          <p class="mb-4">
-            Como desarrollador, veo cada proyecto como un partido donde el trabajo en equipo,
-            la estrategia y las habilidades técnicas marcan la diferencia.
-          </p>
-          <p class="mb-6">
-            Mi juego se basa en la creatividad, la precisión técnica y la capacidad de adaptación.
-            ¡Explora mi campo para conocer mis jugadas especiales y trofeos!
-          </p>
-          
-          <div class="flex flex-wrap gap-4">
-            <a href="/skills" class="bg-team-primary hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition">
-              Ver mis jugadas
-            </a>
-            <a href="/projects" class="bg-team-secondary hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition">
-              Ver mis trofeos
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- Sección Hero principal -->
+  <HeroSection client:load />
+  
+  <!-- Estadísticas del jugador -->
+  <StatsSection client:visible />
+  
+  <!-- Sección de habilidades - campo de fútbol -->
+  <section class="py-16 container mx-auto px-4">
+    <SkillsField client:visible />
+  </section>
+  
+  <!-- Proyectos destacados (trofeos) -->
+  <section class="py-16 bg-gray-50 border-t border-b border-gray-200">
+    <div class="container mx-auto px-4">
+      <TrophyCase 
+        client:visible 
+        projects={[
+          {
+            title: 'Plataforma E-learning',
+            category: 'Aplicación Web',
+            description: 'Desarrollo de una plataforma completa para cursos online con sistema de pagos, gestión de contenido y analíticas en tiempo real.',
+            link: '#',
+            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API']
+          },
+          {
+            title: 'App de Gestión Financiera',
+            category: 'Aplicación Móvil',
+            description: 'Aplicación móvil para gestión de finanzas personales con visualización de datos, seguimiento de presupuesto y alertas personalizadas.',
+            link: '#',
+            technologies: ['React Native', 'Firebase', 'Redux']
+          },
+          {
+            title: 'Dashboard Empresarial',
+            category: 'Plataforma SaaS',
+            description: 'Dashboard interactivo para análisis de datos empresariales con múltiples integraciones y reportes personalizados.',
+            link: '#',
+            technologies: ['Vue.js', 'Express', 'PostgreSQL', 'Docker']
+          },
+        ]}
+      />
     </div>
-  </div>
+  </section>
+  
+  <!-- Sección CTA - Contacto -->
+  <section class="py-20 bg-gradient-to-br from-team-primary to-blue-900 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-6">¿Listo para ficharme en tu equipo?</h2>
+      <p class="max-w-2xl mx-auto text-xl mb-8 text-blue-100">
+        Si buscas un desarrollador que aporte valor desde el primer minuto, ¡hablemos!
+      </p>
+      <a 
+        href="/contact" 
+        class="inline-block bg-white text-team-primary font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 hover:text-gray-900 transition-all transform hover:-translate-y-1"
+      >
+        Contactar Ahora
+      </a>
+    </div>
+  </section>
 </MainLayout>
+
+<style>
+  /* Estilos específicos para la página de inicio */
+  section {
+    position: relative;
+  }
+
+  /* Decoración para la sección de trofeos */
+  section:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-image: linear-gradient(45deg, #f9fafb 25%, transparent 25%, transparent 75%, #f9fafb 75%, #f9fafb), 
+                      linear-gradient(45deg, #f9fafb 25%, transparent 25%, transparent 75%, #f9fafb 75%, #f9fafb);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    z-index: 10;
+  }
+</style>

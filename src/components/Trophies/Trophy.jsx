@@ -1,38 +1,50 @@
+// src/components/Trophies/Trophy.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Trophy({ title, category, description, link, image, index }) {
+export default function Trophy({ title, category, description, link, technologies = [] }) {
   return (
     <motion.div 
-      className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all"
-      initial={{ opacity: 0, y: 50 }}
+      className="trophy-item"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      whileHover={{ y: -10 }}
     >
-      <div className="h-48 bg-gradient-to-r from-team-primary to-team-secondary p-4 flex items-center justify-center">
-        <div className="text-6xl text-white">🏆</div>
+      <div className="trophy-header flex items-center justify-between">
+        <h3 className="text-lg font-bold m-0">{title}</h3>
+        <div className="w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center shadow-inner">
+          <span className="text-yellow-800 text-sm">🏆</span>
+        </div>
       </div>
       
-      <div className="p-6">
-        <div className="flex justify-between items-start">
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
-          <span className="bg-team-secondary/20 text-team-secondary text-xs px-2 py-1 rounded-full">
-            {category}
-          </span>
+      <div className="trophy-content">
+        <div className="mb-3 flex items-center">
+          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">{category}</span>
         </div>
         
-        <p className="text-gray-700 mb-4">{description}</p>
+        <p className="text-gray-700 mb-4 text-sm">{description}</p>
+        
+        {technologies.length > 0 && (
+          <div className="mb-4">
+            <div className="flex flex-wrap gap-1">
+              {technologies.map((tech, index) => (
+                <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
         
         {link && (
           <a 
             href={link} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block bg-team-primary text-white px-4 py-2 rounded-full font-semibold text-sm hover:bg-team-primary/80 transition"
+            className="inline-block text-team-primary font-medium text-sm hover:text-team-secondary transition-colors"
           >
-            Ver proyecto
+            Ver proyecto →
           </a>
         )}
       </div>
