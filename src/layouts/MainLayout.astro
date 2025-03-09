@@ -1,0 +1,79 @@
+---
+// Importamos los estilos globales
+import '../styles/global.css';
+
+// Propiedades del componente
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | El Futbolista del Código</title>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <!-- Header con Navbar -->
+      <header class="bg-team-primary text-white shadow-md">
+        <nav class="container mx-auto px-4 py-3">
+          <div class="flex justify-between items-center">
+            <a href="/" class="text-xl font-bold flex items-center gap-2">
+              <span>⚽</span> El Futbolista del Código
+            </a>
+            
+            <div class="hidden md:flex space-x-4">
+              <a href="/" class="hover:text-team-secondary transition">Inicio</a>
+              <a href="/about" class="hover:text-team-secondary transition">Perfil</a>
+              <a href="/education" class="hover:text-team-secondary transition">Academia</a>
+              <a href="/experience" class="hover:text-team-secondary transition">Partidos</a>
+              <a href="/projects" class="hover:text-team-secondary transition">Trofeos</a>
+              <a href="/skills" class="hover:text-team-secondary transition">Jugadas</a>
+              <a href="/contact" class="hover:text-team-secondary transition">Fichajes</a>
+            </div>
+            
+            <!-- Menú móvil - se implementará con JS -->
+            <button class="md:hidden text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </header>
+      
+      <!-- Contenido principal -->
+      <main class="flex-grow container mx-auto px-4 py-8">
+        <slot />
+      </main>
+      
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <p class="text-sm">© 2023 El Futbolista del Código</p>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-300 hover:text-white">
+                <span>GitHub</span>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <span>LinkedIn</span>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <span>Twitter</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

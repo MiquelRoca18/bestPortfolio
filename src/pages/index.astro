@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Presentación">
+  <div class="text-center py-12">
+    <h1 class="text-5xl font-bold mb-4">¡Bienvenido a mi Campo!</h1>
+    <p class="text-xl mb-8">Desarrollador Full-Stack con pasión por el código limpio y eficiente</p>
+    
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="w-full md:w-1/3">
+          <!-- Placeholder para la imagen del jugador -->
+          <div class="bg-gray-200 rounded-full h-64 w-64 mx-auto flex items-center justify-center">
+            <span class="text-6xl">👨‍💻</span>
+          </div>
+        </div>
+        
+        <div class="w-full md:w-2/3 text-left">
+          <h2 class="text-3xl font-bold mb-4">El Futbolista del Código</h2>
+          <p class="mb-4">
+            Como desarrollador, veo cada proyecto como un partido donde el trabajo en equipo,
+            la estrategia y las habilidades técnicas marcan la diferencia.
+          </p>
+          <p class="mb-6">
+            Mi juego se basa en la creatividad, la precisión técnica y la capacidad de adaptación.
+            ¡Explora mi campo para conocer mis jugadas especiales y trofeos!
+          </p>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="/skills" class="bg-team-primary hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition">
+              Ver mis jugadas
+            </a>
+            <a href="/projects" class="bg-team-secondary hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition">
+              Ver mis trofeos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
