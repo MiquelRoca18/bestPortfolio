@@ -4,10 +4,9 @@ import { motion } from 'framer-motion';
 
 export default function StatsSection() {
   const stats = [
-    { label: 'Proyectos Completados', value: '20+', icon: '🏆' },
-    { label: 'Años de Experiencia', value: '5+', icon: '⏱️' },
-    { label: 'Clientes Satisfechos', value: '15+', icon: '🤝' },
-    { label: 'Horas de Código', value: '5000+', icon: '💻' },
+    { label: 'Proyectos Completados', value: '3+', icon: '🏆' },
+    { label: 'Años de Experiencia', value: '2+', icon: '⏱️' },
+    { label: 'Horas de Código', value: '4000+', icon: '💻' },
   ];
 
   return (
@@ -15,11 +14,11 @@ export default function StatsSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Mi Desempeño en Números</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
+        <div className="flex flex-wrap justify-center gap-8">
+        {stats.map((stat, index) => (
             <motion.div 
               key={index}
-              className="bg-white/10 rounded-lg p-6 text-center backdrop-blur-sm"
+              className="bg-white/10 rounded-lg p-6 text-center backdrop-blur-sm w-full md:w-64"
               whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -68,8 +68,12 @@ export default function HeroSection() {
               <div className="relative bg-gradient-to-br from-team-primary to-blue-900 rounded-2xl overflow-hidden shadow-2xl border-2 border-yellow-500 p-6 text-white w-80">
                 <div className="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 rounded-bl-lg text-sm tracking-wide">ELITE</div>
                 
-                <div className="rounded-full bg-white/10 h-32 w-32 mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-6xl">👨‍💻</span>
+                <div className="rounded-full bg-white/10 h-32 w-32 mx-auto mb-6 flex items-center justify-center overflow-hidden border-2 border-white/30">
+                  <img 
+                    src="/public/img/fotoCv1.webp" 
+                    alt="Foto de perfil" 
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 
                 <div className="text-center mb-6">
@@ -93,9 +97,9 @@ export default function HeroSection() {
                 </div>
               </div>
               
-              {/* Elementos flotantes alrededor de la tarjeta */}
+              {/* Elementos flotantes alrededor de la tarjeta - POSICIONES CAMBIADAS */}
               <motion.div 
-                className="absolute -top-4 -right-4 bg-blue-500 rounded-full w-12 h-12 flex items-center justify-center text-white"
+                className="absolute -top-4 -left-4 bg-blue-500 rounded-full w-12 h-12 flex items-center justify-center text-white"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
               >
@@ -103,7 +107,7 @@ export default function HeroSection() {
               </motion.div>
               
               <motion.div 
-                className="absolute -bottom-4 -left-4 bg-green-500 rounded-full w-12 h-12 flex items-center justify-center text-white"
+                className="absolute -bottom-4 -right-4 bg-green-500 rounded-full w-12 h-12 flex items-center justify-center text-white"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse" }}
               >

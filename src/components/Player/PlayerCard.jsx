@@ -20,7 +20,11 @@ export default function PlayerCard({ name, position, rating, image, skills = [] 
             <img src={image} alt={name} className="h-full object-contain" />
           ) : (
             <div className="h-full w-full flex items-center justify-center">
-              <span className="text-6xl">👨‍💻</span>
+              <img 
+                src="/public/img/fotoCv1.webp" 
+                alt={name || "Foto de perfil"} 
+                className="h-36 w-36 object-cover rounded-full border-2 border-white shadow-lg"
+              />
             </div>
           )}
         </div>
