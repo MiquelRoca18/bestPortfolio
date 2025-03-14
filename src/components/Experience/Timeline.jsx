@@ -56,7 +56,7 @@ export default function Timeline() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="relative border-l-4 border-team-primary ml-6 pl-8 py-4">
+      <div className="relative border-l-4 border-valencia-orange dark:border-valencia-orange-600 ml-6 pl-8 py-4">
         {experiences.map((exp, index) => (
           <motion.div 
             key={exp.id}
@@ -67,24 +67,24 @@ export default function Timeline() {
             viewport={{ once: true }}
           >
             {/* Marcador como balón de fútbol */}
-            <div className="absolute -left-16 w-8 h-8 bg-white rounded-full flex items-center justify-center border-4 border-team-primary">
+            <div className="absolute -left-16 w-8 h-8 bg-valencia-white dark:bg-gray-800 rounded-full flex items-center justify-center border-4 border-valencia-orange dark:border-valencia-orange-600">
               <span>⚽</span>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="bg-valencia-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <h3 className="text-xl font-bold text-team-primary">{exp.role}</h3>
-                <div className="text-sm font-semibold bg-team-secondary/20 text-team-secondary px-3 py-1 rounded-full">
+                <h3 className="text-xl font-bold text-valencia-orange dark:text-valencia-orange-400">{exp.role}</h3>
+                <div className="text-sm font-semibold bg-valencia-yellow/20 text-valencia-yellow-700 dark:text-valencia-yellow px-3 py-1 rounded-full">
                   {exp.period}
                 </div>
               </div>
               
-              <h4 className="text-lg font-semibold mb-3">{exp.company}</h4>
-              <p className="text-gray-700 mb-4">{exp.description}</p>
+              <h4 className="text-lg font-semibold mb-3 dark:text-valencia-white">{exp.company}</h4>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">{exp.description}</p>
               
-              <div className="bg-gray-50 p-4 rounded-md">
-                <h5 className="font-semibold mb-2">Highlights:</h5>
-                <ul className="list-disc list-inside space-y-1 text-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-md">
+                <h5 className="font-semibold mb-2 dark:text-valencia-white">Highlights:</h5>
+                <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
                   {exp.highlights.map((highlight, i) => (
                     <li key={i}>{highlight}</li>
                   ))}

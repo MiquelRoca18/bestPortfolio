@@ -4,23 +4,23 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 font-sans;
+    @apply bg-gray-50 text-gray-900 font-sans dark:bg-valencia-black dark:text-valencia-white;
   }
   h1 {
-    @apply text-4xl md:text-5xl font-bold mb-6 font-poppins;
+    @apply text-4xl md:text-5xl font-bold mb-6 font-poppins text-valencia-orange dark:text-valencia-yellow;
   }
   h2 {
-    @apply text-3xl font-bold mb-4 font-poppins;
+    @apply text-3xl font-bold mb-4 font-poppins text-valencia-orange dark:text-valencia-yellow;
   }
   h3 {
-    @apply text-2xl font-bold mb-3 font-poppins;
+    @apply text-2xl font-bold mb-3 font-poppins text-valencia-orange dark:text-valencia-yellow;
   }
 }
 
 @layer components {
   /* Tarjeta de jugador de fútbol estilo FIFA */
   .player-card {
-    @apply relative bg-gradient-to-br from-team-primary to-blue-900 text-white rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl transform transition-transform hover:scale-105;
+    @apply relative bg-gradient-to-br from-valencia-orange to-valencia-red-700 dark:from-valencia-orange-800 dark:to-valencia-red-900 text-valencia-white rounded-lg overflow-hidden border-2 border-valencia-yellow dark:border-valencia-yellow-600 shadow-xl transform transition-transform hover:scale-105;
     height: 400px;
     width: 300px;
   }
@@ -34,11 +34,11 @@
   }
   
   .player-card-rating {
-    @apply absolute top-4 left-4 bg-yellow-500 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl;
+    @apply absolute top-4 left-4 bg-valencia-yellow dark:bg-valencia-yellow-600 text-valencia-black dark:text-valencia-black font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl;
   }
   
   .player-card-position {
-    @apply absolute top-4 right-4 bg-white text-team-primary font-bold px-2 py-1 rounded-md text-sm;
+    @apply absolute top-4 right-4 bg-valencia-white dark:bg-gray-200 text-valencia-orange dark:text-valencia-orange-600 font-bold px-2 py-1 rounded-md text-sm;
   }
   
   .player-card-stats {
@@ -50,11 +50,11 @@
   }
   
   .player-card-stat-value {
-    @apply text-xl font-bold;
+    @apply text-xl font-bold text-valencia-white dark:text-valencia-white;
   }
   
   .player-card-stat-label {
-    @apply text-xs opacity-80;
+    @apply text-xs text-valencia-white/80 dark:text-valencia-white/90;
   }
   
   /* Campo de fútbol */
@@ -75,11 +75,11 @@
   }
   
   .skill-move-icon {
-    @apply w-14 h-14 rounded-full flex items-center justify-center bg-white shadow-lg transform transition-transform;
+    @apply w-14 h-14 rounded-full flex items-center justify-center bg-valencia-white dark:bg-gray-800 shadow-lg transform transition-transform border-2 border-valencia-orange dark:border-valencia-orange-600;
   }
   
   .skill-move-label {
-    @apply mt-2 px-2 py-1 bg-white rounded-md text-xs font-bold opacity-0 transition-opacity duration-300;
+    @apply mt-2 px-2 py-1 bg-valencia-white dark:bg-gray-800 rounded-md text-xs font-bold opacity-0 transition-opacity duration-300 text-valencia-orange dark:text-valencia-yellow border border-valencia-yellow/50 dark:border-valencia-yellow-600/30;
   }
   
   .skill-move:hover .skill-move-icon {
@@ -91,7 +91,7 @@
   }
   
   .skill-move.active .skill-move-icon {
-    @apply ring-4 ring-yellow-400 scale-110;
+    @apply ring-4 ring-valencia-yellow scale-110;
   }
   
   /* Trofeos */
@@ -100,11 +100,11 @@
   }
   
   .trophy-item {
-    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1;
+    @apply bg-valencia-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1 border border-valencia-yellow/20 dark:border-valencia-orange/20;
   }
   
   .trophy-header {
-    @apply p-4 bg-gradient-to-r from-yellow-500 to-yellow-400 text-white font-bold;
+    @apply p-4 bg-gradient-to-r from-valencia-orange to-valencia-red-600 dark:from-valencia-orange-700 dark:to-valencia-red-800 text-valencia-white font-bold;
   }
   
   .trophy-content {
@@ -113,11 +113,19 @@
   
   /* Botones con estilo de equipo */
   .btn-primary {
-    @apply bg-team-primary hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply bg-valencia-orange hover:bg-valencia-orange-700 text-valencia-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
   
   .btn-secondary {
-    @apply bg-team-secondary hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply bg-valencia-yellow hover:bg-valencia-yellow-600 text-valencia-black font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-accent {
+    @apply bg-valencia-orange hover:bg-valencia-orange-600 text-valencia-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-red {
+    @apply bg-valencia-red hover:bg-valencia-red-600 text-valencia-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
   
   /* Animaciones para elementos */

@@ -38,7 +38,7 @@ const currentYear = new Date().getFullYear();
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,64 +48,84 @@ const currentYear = new Date().getFullYear();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} | El Futbolista del Código</title>
   </head>
-  <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-montserrat text-gray-800">
+  <body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-valencia-black dark:to-gray-900 min-h-screen font-montserrat text-gray-800 dark:text-valencia-white">
     <div class="relative">
       <!-- Decoración de fondo - Balones de fútbol sutiles -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-5">
-        <div class="absolute top-20 left-10 w-24 h-24 rounded-full border-4 border-gray-800"></div>
-        <div class="absolute top-60 right-20 w-16 h-16 rounded-full border-4 border-gray-800"></div>
-        <div class="absolute bottom-40 left-1/4 w-32 h-32 rounded-full border-4 border-gray-800"></div>
+        <div class="absolute top-20 left-10 w-24 h-24 rounded-full border-4 border-gray-800 dark:border-valencia-yellow"></div>
+        <div class="absolute top-60 right-20 w-16 h-16 rounded-full border-4 border-gray-800 dark:border-valencia-yellow"></div>
+        <div class="absolute bottom-40 left-1/4 w-32 h-32 rounded-full border-4 border-gray-800 dark:border-valencia-yellow"></div>
       </div>
       
       <!-- Header con Navbar mejorado -->
-      <header class="sticky top-0 z-50 bg-gradient-to-r from-team-primary to-blue-800 text-white shadow-lg">
+      <header class="sticky top-0 z-50 bg-gradient-to-r from-valencia-orange to-valencia-red-600 dark:from-valencia-orange-800 dark:to-valencia-red-900 text-valencia-white shadow-lg">
         <div class="container mx-auto px-4 py-0">
           <nav class="flex justify-between items-center h-16">
             <a href="/" class="text-xl md:text-2xl font-bold flex items-center gap-2 hover:opacity-90 transition">
-              <div class="bg-white rounded-full p-1 shadow-inner">
-                <span class="text-xl">⚽</span>
-              </div>
+              <img src="/img/valencia-cf-logo.png" alt="Escudo del Valencia CF" class="w-8 h-8 object-contain" />
               <span class="font-poppins tracking-tight">El Futbolista del Código</span>
             </a>
             
             <div class="hidden md:flex items-center space-x-1">
               <!-- Enlaces de navegación -->
-              <a href="/" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Inicio
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Perfil
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/education" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/education" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Academia
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/experience" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/experience" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Partidos
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/projects" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/projects" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Trofeos
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/skills" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/skills" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Jugadas
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/contact" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200 relative group">
+              <a href="/contact" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200 relative group">
                 Fichajes
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-team-secondary group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-valencia-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
+              
+              <!-- Botón de cambio de modo oscuro -->
+              <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-valencia-white dark:bg-valencia-yellow text-valencia-orange dark:text-valencia-black hover:bg-gray-100 dark:hover:bg-valencia-yellow-400 transition-colors duration-300 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </button>
             </div>
             
             <!-- Menú móvil - se implementará con JS -->
-            <button class="md:hidden text-white p-2 focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
+            <div class="md:hidden flex items-center">
+              <!-- Botón de cambio de modo oscuro para móvil -->
+              <button id="theme-toggle-mobile" class="p-2 rounded-full bg-valencia-white dark:bg-valencia-yellow text-valencia-orange dark:text-valencia-black hover:bg-gray-100 dark:hover:bg-valencia-yellow-400 transition-colors duration-300 focus:outline-none mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </button>
+              
+              <button class="text-valencia-white p-2 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
           </nav>
         </div>
       </header>
@@ -116,14 +136,12 @@ const currentYear = new Date().getFullYear();
       </main>
       
       <!-- Footer mejorado -->
-      <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-8 z-10 relative">
+      <footer class="bg-gradient-to-r from-valencia-orange-800 to-valencia-red-800 dark:from-valencia-black dark:to-gray-900 text-valencia-white py-8 z-10 relative">
         <div class="container mx-auto px-4">
           <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
               <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
-                <div class="bg-white rounded-full p-1 w-8 h-8 flex items-center justify-center">
-                  <span class="text-gray-800 text-sm">⚽</span>
-                </div>
+                <img src="/img/valencia-cf-logo.png" alt="Escudo del Valencia CF" class="w-8 h-8 object-contain" />
                 <span class="font-poppins font-bold">El Futbolista del Código</span>
               </div>
               <p class="text-sm text-gray-300 text-center md:text-left">Combinando la pasión por el código con la estrategia del fútbol</p>
@@ -132,13 +150,13 @@ const currentYear = new Date().getFullYear();
             <div class="flex flex-col items-center md:items-end">
               <div class="flex space-x-4 mb-4">
                 <!-- Iconos de redes sociales -->
-                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                <a href="#" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
                   <Fragment set:html={socialIcons.github} />
                 </a>
-                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                <a href="#" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
                   <Fragment set:html={socialIcons.linkedin} />
                 </a>
-                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                <a href="#" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
                   <Fragment set:html={socialIcons.twitter} />
                 </a>
               </div>
@@ -148,5 +166,39 @@ const currentYear = new Date().getFullYear();
         </div>
       </footer>
     </div>
+
+    <script>
+      // Script para manejar el cambio de tema
+      document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+        
+        // Verificar si hay una preferencia guardada
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          html.classList.add('dark');
+        }
+        
+        // Función para cambiar el tema
+        const toggleTheme = () => {
+          if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        };
+        
+        // Agregar eventos de clic a los botones
+        if (themeToggle) {
+          themeToggle.addEventListener('click', toggleTheme);
+        }
+        if (themeToggleMobile) {
+          themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+      });
+    </script>
   </body>
 </html>

@@ -20,7 +20,7 @@ import TrophyCase from '../components/Trophies/TrophyCase';
   </section>
   
   <!-- Proyectos destacados (trofeos) -->
-  <section class="py-16 bg-gray-50 border-t border-b border-gray-200">
+  <section class="py-16 bg-gray-50 dark:bg-valencia-black/90 border-t border-b border-gray-200 dark:border-gray-800">
     <div class="container mx-auto px-4">
       <TrophyCase 
         client:visible 
@@ -52,15 +52,15 @@ import TrophyCase from '../components/Trophies/TrophyCase';
   </section>
   
   <!-- Sección CTA - Contacto -->
-  <section class="py-20 bg-gradient-to-br from-team-primary to-blue-900 text-white">
+  <section class="py-20 bg-gradient-to-br from-valencia-orange to-valencia-red-700 dark:from-valencia-orange-800 dark:to-valencia-red-900 text-valencia-white">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-4xl font-bold mb-6">¿Listo para ficharme en tu equipo?</h2>
-      <p class="max-w-2xl mx-auto text-xl mb-8 text-blue-100">
+      <p class="max-w-2xl mx-auto text-xl mb-8 text-valencia-white/90 dark:text-valencia-white/80">
         Si buscas un desarrollador que aporte valor desde el primer minuto, ¡hablemos!
       </p>
       <a 
         href="/contact" 
-        class="inline-block bg-white text-team-primary font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 hover:text-gray-900 transition-all transform hover:-translate-y-1"
+        class="inline-block bg-valencia-white text-valencia-orange dark:bg-valencia-yellow dark:text-valencia-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-valencia-yellow hover:text-valencia-black dark:hover:bg-valencia-white dark:hover:text-valencia-orange transition-all transform hover:-translate-y-1"
       >
         Contactar Ahora
       </a>
@@ -87,5 +87,12 @@ import TrophyCase from '../components/Trophies/TrophyCase';
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
     z-index: 10;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    section:nth-child(3)::before {
+      background-image: linear-gradient(45deg, #111827 25%, transparent 25%, transparent 75%, #111827 75%, #111827), 
+                        linear-gradient(45deg, #111827 25%, transparent 25%, transparent 75%, #111827 75%, #111827);
+    }
   }
 </style>
