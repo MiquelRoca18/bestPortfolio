@@ -15,15 +15,16 @@ export default function SkillMove({ skill, isActive, onClick }) {
       onClick={onClick}
     >
       <motion.div 
-        className={`skill-move-icon ${skill.color}`}
+        className={`skill-move-icon ${skill.color} w-16 h-16 flex items-center justify-center rounded-full`}
         animate={isActive ? { 
           scale: [1, 1.1, 1], 
           boxShadow: "0px 0px 8px 2px rgba(255,215,0,0.7)" 
         } : {}}
         transition={{ duration: 0.8, repeat: isActive ? Infinity : 0, repeatType: "reverse" }}
       >
-        <span className="text-xl">{skill.icon}</span>
+        <span className="text-2xl">{skill.icon}</span>
       </motion.div>
+
       
       <div className="skill-move-label">
         <span className="text-gray-800 font-medium">{skill.name}</span>
