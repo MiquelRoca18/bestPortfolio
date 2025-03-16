@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Chapas con Colisiones</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+        }
+        #gameCanvas {
+            background-color: #388e3c; /* Color verde cancha */
+            cursor: default;
+            display: block;
+            margin: 0 auto;
+        }
+        .controls {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div class="controls">
+        <p>Haz clic en una chapa y arrastra para determinar dirección y potencia</p>
+        <p>Suelta para lanzar la chapa</p>
+    </div>
+
+    <script>
+        // Configuración del juego
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Ajustar tamaño del canvas
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * 0.95;
+            canvas.height = window.innerHeight * 0.85;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Variables globales
+        const chapas = [];
+        let selectedChapa = null;
+        let isDragging = false;
+        let startDragPos = { x: 0, y: 0 };
+        let currentDragPos = { x: 0, y: 0 };
+        const MAX_ARROW_LENGTH = 150; // Longitud máxima de la flecha
+        const MIN_ARROW_LENGTH = 10;  // Longitud mínima de la flecha
+        
+        // Clase para representar una chapa
+        class Chapa {
+            constructor(x, y, radius, color, name) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.borderColor = this.darkenColor(color, 50);
+                this.name = name;
+                this.vx = 0;
+                this.vy = 0;
+                this.isMoving = false;
+                this.friction = 0.97; // Fricción
+                this.restitution = 0.8; // Rebote
+                this.mass = radius * radius * 0.01; // Masa proporcional al tamaño
+            }
+            
+            darkenColor(color, amount) {
+                // Función para oscurecer el color para el borde
+                const num = parseInt(color.slice(1), 16);
+                const amt = Math.round(2.55 * amount);
+                const R = Math.max(0, (num >> 16) - amt);
+                const G = Math.max(0, (num >> 8 & 0x00FF) - amt);
+                const B = Math.max(0, (num & 0x0000FF) - amt);
+                return `#${(1 << 24 | R << 16 | G << 8 | B).toString(16).slice(1)}`;
+            }
+            
+            draw() {
+                // Dibujar sombra
+                ctx.beginPath();
+                ctx.arc(this.x, this.y + 3, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                ctx.fill();
+                
+                // Dibujar cuerpo principal
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                
+                // Dibujar borde
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = this.borderColor;
+                ctx.stroke();
+                
+                // Dibujar nombre
+                ctx.font = `${this.radius / 2}px Arial`;
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.name, this.x, this.y);
+                
+                // Indicador de selección
+                if (this === selectedChapa && !isDragging) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius + 5, 0, Math.PI * 2);
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([5, 5]);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+                
+                // Dibujar vector de velocidad (para depuración)
+                if (this.isMoving && false) { // Cambiar a true para ver vectores de velocidad
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(this.x + this.vx * 10, this.y + this.vy * 10);
+                    ctx.strokeStyle = 'yellow';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+            
+            update() {
+                if (!this.isMoving) return;
+                
+                // Actualizar posición
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                // Comprobar colisiones con los bordes
+                if (this.x - this.radius < 0) {
+                    this.x = this.radius;
+                    this.vx *= -this.restitution;
+                } else if (this.x + this.radius > canvas.width) {
+                    this.x = canvas.width - this.radius;
+                    this.vx *= -this.restitution;
+                }
+                
+                if (this.y - this.radius < 0) {
+                    this.y = this.radius;
+                    this.vy *= -this.restitution;
+                } else if (this.y + this.radius > canvas.height) {
+                    this.y = canvas.height - this.radius;
+                    this.vy *= -this.restitution;
+                }
+                
+                // Aplicar fricción
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                
+                // Detener la chapa si la velocidad es muy baja
+                if (Math.abs(this.vx) < 0.1 && Math.abs(this.vy) < 0.1) {
+                    this.vx = 0;
+                    this.vy = 0;
+                    this.isMoving = false;
+                }
+            }
+            
+            launch(power, angle) {
+                // Aplicar velocidad basada en la potencia y el ángulo
+                const normalizedPower = power / MAX_ARROW_LENGTH;
+                // Aplicar una curva de potencia para un mejor control
+                const finalPower = Math.pow(normalizedPower, 1.2) * 15;
+                
+                this.vx = Math.cos(angle) * finalPower;
+                this.vy = Math.sin(angle) * finalPower;
+                this.isMoving = true;
+            }
+            
+            contains(x, y) {
+                // Comprobar si un punto está dentro de la chapa
+                const dx = this.x - x;
+                const dy = this.y - y;
+                return Math.sqrt(dx * dx + dy * dy) <= this.radius;
+            }
+        }
+        
+        // Crear chapas iniciales
+        function createInitialChapas() {
+            const teamColors = ['#F44336', '#2196F3', '#4CAF50', '#FFC107', '#9C27B0', '#FF5722'];
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // Crear formación con diferentes tamaños
+            // Chapas más pequeñas con formación defensiva
+            for (let i = 0; i < 3; i++) {
+                const angle = (Math.PI / 4) + i * (Math.PI / 4);
+                const distance = 180;
+                const x = centerX - Math.cos(angle) * distance;
+                const y = centerY - Math.sin(angle) * distance;
+                const radius = 25 + Math.random() * 10;
+                chapas.push(new Chapa(x, y, radius, teamColors[i], (i+1).toString()));
+            }
+            
+            // Chapas más grandes con formación atacante
+            for (let i = 0; i < 3; i++) {
+                const angle = (Math.PI / 4) + i * (Math.PI / 4);
+                const distance = 180;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                const radius = 30 + Math.random() * 10;
+                chapas.push(new Chapa(x, y, radius, teamColors[i+3], (i+4).toString()));
+            }
+            
+            // Añadir chapa central
+            chapas.push(new Chapa(centerX, centerY, 35, '#FFFFFF', 'C'));
+        }
+        
+        // Dibujar la flecha de dirección
+        function drawDirectionArrow() {
+            if (!isDragging || !selectedChapa) return;
+            
+            const dx = currentDragPos.x - startDragPos.x;
+            const dy = currentDragPos.y - startDragPos.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Solo dibujar si la distancia es suficiente
+            if (distance < MIN_ARROW_LENGTH) return;
+            
+            // Calcular longitud y ángulo de la flecha
+            const angle = Math.atan2(dy, dx);
+            const arrowLength = Math.min(distance, MAX_ARROW_LENGTH);
+            
+            // Calcular el punto final de la flecha
+            const endX = selectedChapa.x - Math.cos(angle) * arrowLength;
+            const endY = selectedChapa.y - Math.sin(angle) * arrowLength;
+            
+            // Calcular potencia normalizada (0-1)
+            const power = Math.min(distance / MAX_ARROW_LENGTH, 1);
+            
+            // Determinar color basado en la potencia
+            let arrowColor;
+            if (power < 0.3) {
+                arrowColor = '#4CAF50'; // Verde para potencia baja
+            } else if (power < 0.7) {
+                arrowColor = '#FFC107'; // Amarillo para potencia media
+            } else {
+                arrowColor = '#F44336'; // Rojo para potencia alta
+            }
+            
+            // Dibujar línea principal de la flecha
+            ctx.beginPath();
+            ctx.moveTo(selectedChapa.x, selectedChapa.y);
+            ctx.lineTo(endX, endY);
+            ctx.strokeStyle = arrowColor;
+            ctx.lineWidth = 4 + power * 4; // Grosor entre 4 y 8 px
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            
+            // Dibujar punta de flecha
+            const headLength = 15 + power * 5; // Longitud entre 15 y 20 px
+            const headWidth = headLength * 0.8;
+            
+            // Calcular puntos para la punta de flecha
+            const angle90 = angle + Math.PI/2;
+            const angle270 = angle - Math.PI/2;
+            
+            // Punto 1 (izquierda de la punta)
+            const point1X = endX + Math.cos(angle + Math.PI) * headLength + Math.cos(angle90) * (headWidth/2);
+            const point1Y = endY + Math.sin(angle + Math.PI) * headLength + Math.sin(angle90) * (headWidth/2);
+            
+            // Punto 2 (derecha de la punta)
+            const point2X = endX + Math.cos(angle + Math.PI) * headLength + Math.cos(angle270) * (headWidth/2);
+            const point2Y = endY + Math.sin(angle + Math.PI) * headLength + Math.sin(angle270) * (headWidth/2);
+            
+            // Dibujar la punta de flecha
+            ctx.beginPath();
+            ctx.moveTo(endX, endY);
+            ctx.lineTo(point1X, point1Y);
+            ctx.lineTo(point2X, point2Y);
+            ctx.closePath();
+            ctx.fillStyle = arrowColor;
+            ctx.fill();
+            
+            // Dibujar pequeño círculo en el origen
+            ctx.beginPath();
+            ctx.arc(selectedChapa.x, selectedChapa.y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = arrowColor;
+            ctx.fill();
+        }
+        
+        // Detectar y resolver colisiones entre chapas
+        function detectCollisions() {
+            for (let i = 0; i < chapas.length; i++) {
+                for (let j = i + 1; j < chapas.length; j++) {
+                    const chapa1 = chapas[i];
+                    const chapa2 = chapas[j];
+                    
+                    // Calcular la distancia entre centros
+                    const dx = chapa2.x - chapa1.x;
+                    const dy = chapa2.y - chapa1.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    // Verificar si hay colisión (distancia < suma de radios)
+                    const minDistance = chapa1.radius + chapa2.radius;
+                    
+                    if (distance < minDistance) {
+                        // Calcular el vector de colisión normalizado
+                        const nx = dx / distance;
+                        const ny = dy / distance;
+                        
+                        // Calcular la velocidad relativa en dirección de la colisión
+                        const relativeVelocityX = chapa2.vx - chapa1.vx;
+                        const relativeVelocityY = chapa2.vy - chapa1.vy;
+                        const relativeVelocity = nx * relativeVelocityX + ny * relativeVelocityY;
+                        
+                        // Solo resolver la colisión si las chapas se acercan entre sí
+                        if (relativeVelocity > 0) continue;
+                        
+                        // Calcular el impulso (conservación de momento)
+                        const e = Math.min(chapa1.restitution, chapa2.restitution); // Coeficiente de restitución
+                        const j = -(1 + e) * relativeVelocity / ((1 / chapa1.mass) + (1 / chapa2.mass));
+                        
+                        // Aplicar impulso a ambas chapas
+                        const impulseX = j * nx;
+                        const impulseY = j * ny;
+                        
+                        // Invertir el impulso según la masa de cada chapa
+                        chapa1.vx -= impulseX / chapa1.mass;
+                        chapa1.vy -= impulseY / chapa1.mass;
+                        chapa2.vx += impulseX / chapa2.mass;
+                        chapa2.vy += impulseY / chapa2.mass;
+                        
+                        // Asegurarse de que ambas chapas estén en movimiento
+                        chapa1.isMoving = true;
+                        chapa2.isMoving = true;
+                        
+                        // Separar las chapas para evitar que se queden pegadas
+                        const overlap = 0.5 * (minDistance - distance);
+                        const correctionX = overlap * nx;
+                        const correctionY = overlap * ny;
+                        
+                        // Corregir posiciones en proporción inversa a las masas
+                        const totalMass = chapa1.mass + chapa2.mass;
+                        const ratio1 = chapa2.mass / totalMass;
+                        const ratio2 = chapa1.mass / totalMass;
+                        
+                        chapa1.x -= correctionX * ratio1;
+                        chapa1.y -= correctionY * ratio1;
+                        chapa2.x += correctionX * ratio2;
+                        chapa2.y += correctionY * ratio2;
+                    }
+                }
+            }
+        }
+        
+        // Comprobar si alguna chapa está en movimiento
+        function isAnyMoving() {
+            return chapas.some(chapa => chapa.isMoving);
+        }
+        
+        // Manejar eventos de ratón/táctil
+        function handleMouseDown(e) {
+            if (isAnyMoving()) return; // No permitir selección mientras hay movimiento
+            
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            // Comprobar si se ha hecho clic en alguna chapa
+            for (const chapa of chapas) {
+                if (chapa.contains(mouseX, mouseY)) {
+                    selectedChapa = chapa;
+                    startDragPos = { x: mouseX, y: mouseY };
+                    currentDragPos = { x: mouseX, y: mouseY };
+                    break;
+                }
+            }
+        }
+        
+        function handleMouseMove(e) {
+            if (!selectedChapa || isAnyMoving()) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            // Iniciar arrastre si el ratón se mueve más de 5px
+            if (!isDragging) {
+                const dx = mouseX - startDragPos.x;
+                const dy = mouseY - startDragPos.y;
+                if (Math.sqrt(dx * dx + dy * dy) > 5) {
+                    isDragging = true;
+                }
+            }
+            
+            if (isDragging) {
+                currentDragPos = { x: mouseX, y: mouseY };
+            }
+        }
+        
+        function handleMouseUp(e) {
+            if (!selectedChapa || !isDragging || isAnyMoving()) {
+                selectedChapa = null;
+                isDragging = false;
+                return;
+            }
+            
+            const dx = currentDragPos.x - startDragPos.x;
+            const dy = currentDragPos.y - startDragPos.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance > MIN_ARROW_LENGTH) {
+                const angle = Math.atan2(dy, dx);
+                const power = Math.min(distance, MAX_ARROW_LENGTH);
+                selectedChapa.launch(power, angle);
+            }
+            
+            // Resetear estados
+            selectedChapa = null;
+            isDragging = false;
+        }
+        
+        // Añadir eventos de ratón
+        canvas.addEventListener('mousedown', handleMouseDown);
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseup', handleMouseUp);
+        canvas.addEventListener('mouseleave', handleMouseUp);
+        
+        // Añadir eventos táctiles
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            handleMouseDown({
+                clientX: e.touches[0].clientX,
+                clientY: e.touches[0].clientY
+            });
+        });
+        
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            handleMouseMove({
+                clientX: e.touches[0].clientX,
+                clientY: e.touches[0].clientY
+            });
+        });
+        
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            handleMouseUp();
+        });
+        
+        // Dibujar líneas del campo
+        function drawField() {
+            // Dibujar líneas del campo
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.lineWidth = 2;
+            
+            // Línea central
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            
+            // Círculo central
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, 70, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Áreas
+            const areaWidth = 150;
+            const areaHeight = 300;
+            
+            // Área izquierda
+            ctx.beginPath();
+            ctx.rect(0, (canvas.height - areaHeight) / 2, areaWidth, areaHeight);
+            ctx.stroke();
+            
+            // Área derecha
+            ctx.beginPath();
+            ctx.rect(canvas.width - areaWidth, (canvas.height - areaHeight) / 2, areaWidth, areaHeight);
+            ctx.stroke();
+        }
+        
+        // Función principal de bucle de juego
+        function gameLoop() {
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar campo
+            drawField();
+            
+            // Detectar y resolver colisiones entre chapas
+            detectCollisions();
+            
+            // Actualizar y dibujar chapas
+            for (const chapa of chapas) {
+                chapa.update();
+                chapa.draw();
+            }
+            
+            // Dibujar flecha de dirección
+            drawDirectionArrow();
+            
+            // Solicitar siguiente frame
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // Inicializar juego
+        createInitialChapas();
+        gameLoop();
+    </script>
+</body>
+</html>

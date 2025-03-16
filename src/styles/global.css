@@ -63,124 +63,47 @@
     aspect-ratio: 4/3;
     background-image: linear-gradient(to right, #2e8b57, #3a9e64, #46b171);
     background-size: 100% 100%;
+    position: relative;
+    overflow: visible !important;
   }
   
   .field-lines {
     @apply absolute inset-0 z-10;
   }
   
-  /* Habilidad en el campo estilo jugada especial */
+  /* Habilidad en el campo */
   .skill-move {
     @apply absolute flex flex-col items-center justify-center z-20;
-    transition: none;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: auto;
+    height: auto;
+    touch-action: none;
   }
   
   .skill-move-icon {
     @apply w-14 h-14 rounded-full flex items-center justify-center bg-valencia-white dark:bg-gray-800 shadow-lg border-2 border-valencia-orange dark:border-valencia-orange-600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .skill-move-label {
-    @apply mt-2 px-2 py-1 bg-valencia-white dark:bg-gray-800 rounded-md text-xs font-bold opacity-0 transition-opacity duration-300 text-valencia-orange dark:text-valencia-yellow border border-valencia-yellow/50 dark:border-valencia-yellow-600/30;
+    @apply mt-2 px-2 py-1 bg-valencia-white dark:bg-gray-800 rounded-md text-xs font-bold text-valencia-orange dark:text-valencia-yellow border border-gray-200 dark:border-gray-600 shadow-sm opacity-0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
   
-  /* Solo mostrar la etiqueta cuando el modo de juego está desactivado */
   .skill-move:hover .skill-move-label {
     @apply opacity-100;
   }
   
   .skill-move.active .skill-move-icon {
-    @apply ring-4 ring-valencia-yellow scale-110;
-  }
-  
-  /* Estilos para el modo de juego de fútbol chapas */
-  .skill-move.is-moving .skill-move-icon {
-    @apply scale-110 shadow-xl;
-  }
-  
-  /* Efecto de rotación solo cuando está en movimiento activo */
-  .skill-move.is-moving .skill-move-icon span {
-    animation: spin 1.5s linear;
-  }
-  
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* Indicador de dirección y fuerza para el lanzamiento */
-  .direction-indicator {
-    position: absolute;
-    height: 0.5rem;
-    opacity: 0.8;
-    transform-origin: left center;
-    z-index: 30;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Colores para el indicador de fuerza */
-  .direction-indicator.bg-green-500 {
-    background-color: #48bb78;
-    box-shadow: 0 0 8px rgba(72, 187, 120, 0.7);
-  }
-  
-  .direction-indicator.bg-yellow-500 {
-    background-color: #edb733;
-    box-shadow: 0 0 8px rgba(237, 183, 51, 0.7);
-  }
-  
-  .direction-indicator.bg-red-500 {
-    background-color: #f56565;
-    box-shadow: 0 0 8px rgba(245, 101, 101, 0.7);
-  }
-  
-  /* Efecto de rastro para las chapas en movimiento */
-  .skill-move.is-moving::after {
-    content: '';
-    @apply absolute rounded-full opacity-30;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-    animation: pulse 1s infinite;
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0.3;
-    }
-  }
-  
-  /* Cursor personalizado para las chapas arrastrables */
-  .skill-move[data-draggable="true"] {
-    cursor: grab;
-  }
-  
-  .skill-move[data-dragging="true"] {
-    cursor: grabbing;
-    z-index: 50;
-  }
-  
-  /* Desactivar interacción con chapas no arrastrables */
-  .skill-move[data-draggable="false"] {
-    pointer-events: none;
-  }
-  
-  /* Excepción para el modo información */
-  .skill-move[data-info-mode="true"] {
-    pointer-events: auto;
-    cursor: pointer;
+    @apply ring-4 ring-valencia-yellow;
   }
   
   /* Trofeos */
@@ -212,16 +135,16 @@
   .btn-accent {
     @apply bg-valencia-orange hover:bg-valencia-orange-600 text-valencia-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
-  
+
   .btn-red {
     @apply bg-valencia-red hover:bg-valencia-red-600 text-valencia-white font-bold py-2 px-6 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
-  
+
   /* Animaciones para elementos */
   .animate-bounce-slow {
     animation: bounce 3s infinite;
   }
-  
+
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);
@@ -238,11 +161,7 @@
     transform: scale(0.9);
     margin: 0 auto;
   }
-  
-  .skill-move {
-    transform: scale(0.9);
-  }
-  
+
   .skill-move-icon {
     @apply w-12 h-12;
   }
