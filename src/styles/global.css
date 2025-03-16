@@ -166,3 +166,98 @@
     @apply w-12 h-12;
   }
 }
+/* Estos estilos deberían añadirse al archivo src/styles/global.css */
+
+/* Estilos para el campo de fútbol */
+.football-field {
+  @apply w-full max-w-4xl mx-auto relative rounded-xl overflow-hidden shadow-2xl;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: visible !important;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Estilos para las chapas (habilidades) */
+.skill-move {
+  position: absolute;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transition: filter 0.3s;
+}
+
+.skill-move.active .skill-move-icon {
+  @apply ring-4 ring-valencia-yellow;
+}
+
+.skill-move-icon {
+  @apply w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-2 border-gray-200 dark:border-gray-600;
+  cursor: grab;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-move-icon:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.skill-move-label {
+  @apply mt-2 px-2 py-1 bg-valencia-white dark:bg-gray-800 rounded-md text-xs font-bold text-valencia-orange dark:text-valencia-yellow border border-gray-200 dark:border-gray-600 shadow-sm opacity-0;
+  transition: opacity 0.3s;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.skill-move:hover .skill-move-label {
+  opacity: 1;
+}
+
+/* Añadir efecto de sombra para las chapas */
+.skill-move::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 80%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  filter: blur(3px);
+  z-index: -1;
+}
+
+/* Estilo para chapas en movimiento */
+.skill-move[data-moving="true"] .skill-move-icon {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .skill-move-icon {
+    @apply w-12 h-12;
+  }
+  
+  .skill-move::after {
+    width: 70%;
+    height: 8px;
+  }
+}
