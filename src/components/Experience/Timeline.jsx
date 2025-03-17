@@ -6,51 +6,24 @@ export default function Timeline() {
   const experiences = [
     {
       id: 1,
-      company: "Tech Solutions Inc.",
-      role: "Senior Frontend Developer",
-      period: "2022 - Presente",
-      description: "Desarrollo de interfaces de usuario con React y TypeScript para aplicaciones empresariales. Implementación de arquitecturas frontend escalables y optimización de rendimiento.",
-      highlights: [
-        "Mejora del 40% en el rendimiento de carga de la aplicación",
-        "Implementación de sistema de componentes reutilizables",
-        "Mentorización de desarrolladores junior"
-      ]
+      company: "ATE Outsourcing - SEUR",
+      role: "Mozo de Almacén",
+      period: "2024 - Presente",
+      description: "Encargado de descargar camiones, comprobar y contar productos, ubicar mercancías según criterios de rotación y seguridad, realizar inventarios y preparar pedidos utilizando lectores ópticos y terminales."
     },
     {
       id: 2,
-      company: "Digital Innovators",
-      role: "Full Stack Developer",
-      period: "2020 - 2022",
-      description: "Desarrollo full stack con MERN (MongoDB, Express, React, Node.js). Creación de APIs RESTful y despliegue de aplicaciones en entornos cloud.",
-      highlights: [
-        "Desarrollo de plataforma e-commerce con más de 10,000 usuarios",
-        "Integración con múltiples pasarelas de pago",
-        "Implementación de CI/CD con GitHub Actions"
-      ]
+      company: "Soluciones Abiertas S.L.",
+      role: "Prácticas Desarrollador Web",
+      period: "2024 - 2024",
+      description: "Desarrollo de plugins para WordPress, diseño y migración de frameworks web, optimizando rendimiento y funcionalidad."
     },
     {
       id: 3,
-      company: "CreativeLab",
-      role: "Frontend Developer",
-      period: "2018 - 2020",
-      description: "Desarrollo de sitios web y aplicaciones interactivas utilizando HTML, CSS, JavaScript y frameworks frontend.",
-      highlights: [
-        "Desarrollo de 15+ sitios web responsivos",
-        "Migración de aplicaciones legacy a React",
-        "Implementación de testing automatizado"
-      ]
-    },
-    {
-      id: 4,
-      company: "StartUp Vision",
-      role: "Web Developer Intern",
-      period: "2017 - 2018",
-      description: "Desarrollo web con WordPress y PHP. Colaboración en proyectos de diseño y desarrollo.",
-      highlights: [
-        "Creación de temas personalizados para WordPress",
-        "Optimización SEO para sitios de clientes",
-        "Soporte técnico para plataformas existentes"
-      ]
+      company: "Forn la Vall",
+      role: "Camarero & Panadero",
+      period: "2021 - 2021",
+      description: "Atención y servicio de pedidos, cobro a clientes y limpieza del área de trabajo. Elaboración y horneado de pan y pasteles, con acabados y control de calidad en la producción."
     }
   ];
 
@@ -80,16 +53,7 @@ export default function Timeline() {
               </div>
               
               <h4 className="text-lg font-semibold mb-3 dark:text-valencia-white">{exp.company}</h4>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">{exp.description}</p>
-              
-              <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-md">
-                <h5 className="font-semibold mb-2 dark:text-valencia-white">Highlights:</h5>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-                  {exp.highlights.map((highlight, i) => (
-                    <li key={i}>{highlight}</li>
-                  ))}
-                </ul>
-              </div>
+              <p className="text-gray-700 dark:text-gray-300">{exp.description}</p>
             </div>
           </motion.div>
         ))}

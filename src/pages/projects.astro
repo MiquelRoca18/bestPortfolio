@@ -1,5 +1,4 @@
 ---
-// src/pages/projects.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import TrophyCase from '../components/Trophies/TrophyCase';
 ---
@@ -15,8 +14,7 @@ import TrophyCase from '../components/Trophies/TrophyCase';
         </p>
       </div>
       
-      <!-- Decoración inspirada en fútbol -->
-      <div class="relative py-8">
+      <div class="relative">
         <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div class="w-40 h-1 bg-gradient-to-r from-valencia-orange via-valencia-yellow to-valencia-red rounded-full"></div>
         </div>
@@ -27,132 +25,47 @@ import TrophyCase from '../components/Trophies/TrophyCase';
         client:visible 
         projects={[
           {
-            title: 'Plataforma E-learning',
+            title: 'Sistema ERP Construcción',
             category: 'Aplicación Web',
-            description: 'Desarrollo de una plataforma completa para cursos online con sistema de pagos, gestión de contenido y analíticas en tiempo real.',
-            link: '#',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API']
+            description: 'ERP para construcción que centraliza proyectos, recursos, finanzas y personal. Optimiza procesos y decisiones, escalable y personalizable. Ideal para cualquier proyecto.',
+            githubLink: 'https://github.com/MiquelRoca18/sistema-erp-construccion',
+            projectLink: 'https://sistema-erp-construccion-1.onrender.com/',
+            technologies: ['Vue', 'PHP', 'MySQL', 'Tailwind CSS']
           },
           {
-            title: 'App de Gestión Financiera',
-            category: 'Aplicación Móvil',
-            description: 'Aplicación móvil para gestión de finanzas personales con visualización de datos, seguimiento de presupuesto y alertas personalizadas.',
-            link: '#',
-            technologies: ['React Native', 'Firebase', 'Redux']
-          },
+            title: 'Lanzamientos SpaceX',
+            category: 'Sitio Web',
+            description: 'Sitio web en Astro que muestra lanzamientos de SpaceX a través de su API, con número de vuelo, parche, descripción y estado, y navegación por paginación.',
+            githubLink: 'https://github.com/MiquelRoca18/astroSpaceX',
+            projectLink: 'https://astrospacex.netlify.app/',
+            technologies: ['Astro', 'API SpaceX', 'JavaScript']
+          } ,
           {
-            title: 'Dashboard Empresarial',
-            category: 'Plataforma SaaS',
-            description: 'Dashboard interactivo para análisis de datos empresariales con múltiples integraciones y reportes personalizados.',
-            link: '#',
-            technologies: ['Vue.js', 'Express', 'PostgreSQL', 'Docker']
-          },
-          {
-            title: 'E-commerce Multivendor',
+            title: 'Buscador de Películas',
             category: 'Aplicación Web',
-            description: 'Plataforma de comercio electrónico multivendedor con carrito de compras, pasarela de pagos y panel de administración.',
-            link: '#',
-            technologies: ['Next.js', 'GraphQL', 'MongoDB', 'Tailwind CSS']
+            description: 'Buscador de películas desarrollado en React. Permite buscar por cualquier cadena de texto dentro de un catálogo de películas en un archivo JSON y ordenarlas alfabéticamente.',
+            githubLink: 'https://github.com/MiquelRoca18/react-buscador-peliculas',
+            projectLink: 'https://reeaactflixx.netlify.app/',
+            technologies: ['React', 'JavaScript', 'JSON']
           },
           {
-            title: 'API RESTful para Gestión de Recursos',
-            category: 'Backend',
-            description: 'Desarrollo de una API completa para gestión de recursos con autenticación, autorización y documentación exhaustiva.',
-            link: '#',
-            technologies: ['Node.js', 'Express', 'JWT', 'Swagger']
+            title: 'Tienda en Línea',
+            category: 'Aplicación Web',
+            description: 'Aplicación de tienda en línea construida con React. Permite explorar productos desde un JSON, filtrarlos por precio y categoría, agregar al carrito y ajustar cantidades.',
+            githubLink: 'https://github.com/MiquelRoca18/shoppingCart',
+            projectLink: 'https://tiendareactroca.netlify.app/',
+            technologies: ['React', 'JavaScript', 'JSON', 'CSS']
           },
           {
-            title: 'App de Seguimiento Fitness',
-            category: 'Aplicación Móvil',
-            description: 'Aplicación móvil para seguimiento de rutinas de ejercicio, nutrición y progreso personal con sincronización en la nube.',
-            link: '#',
-            technologies: ['Flutter', 'Firebase', 'RESTful API']
+            title: 'Nike Store',
+            category: 'Landing Page',
+            description: 'Tienda en línea moderna para productos Nike, construida con React y Tailwind CSS. Diseño elegante y responsive con secciones para colecciones, ofertas, reseñas de clientes y formulario de suscripción.',
+            githubLink: 'https://github.com/MiquelRoca18/tailwindNike',
+            projectLink: 'https://tailwindnikee.netlify.app/',
+            technologies: ['React', 'Tailwind CSS', 'JavaScript']
           }
         ]}
       />
-    </div>
-    
-    <!-- Sección de Premios y Reconocimientos -->
-    <div class="bg-gray-100 dark:bg-gray-800 py-16">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-valencia-orange dark:text-valencia-yellow">Premios y Reconocimientos</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Premio 1 -->
-          <div class="bg-valencia-white dark:bg-gray-700 rounded-xl p-6 shadow-lg flex flex-col items-center text-center transform transition-transform hover:scale-105">
-            <div class="w-20 h-20 flex items-center justify-center bg-valencia-yellow/20 dark:bg-valencia-yellow/10 rounded-full mb-4">
-              <span class="text-4xl">🥇</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-valencia-orange dark:text-valencia-yellow">Hackathon Frontend 2023</h3>
-            <p class="text-gray-700 dark:text-gray-300">Primer lugar en hackathon de desarrollo frontend organizado por [Organización].</p>
-          </div>
-          
-          <!-- Premio 2 -->
-          <div class="bg-valencia-white dark:bg-gray-700 rounded-xl p-6 shadow-lg flex flex-col items-center text-center transform transition-transform hover:scale-105">
-            <div class="w-20 h-20 flex items-center justify-center bg-valencia-yellow/20 dark:bg-valencia-yellow/10 rounded-full mb-4">
-              <span class="text-4xl">🏅</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-valencia-orange dark:text-valencia-yellow">Mejor Solución Tecnológica</h3>
-            <p class="text-gray-700 dark:text-gray-300">Reconocimiento a la mejor solución tecnológica para [problema específico].</p>
-          </div>
-          
-          <!-- Premio 3 -->
-          <div class="bg-valencia-white dark:bg-gray-700 rounded-xl p-6 shadow-lg flex flex-col items-center text-center transform transition-transform hover:scale-105">
-            <div class="w-20 h-20 flex items-center justify-center bg-valencia-yellow/20 dark:bg-valencia-yellow/10 rounded-full mb-4">
-              <span class="text-4xl">🏆</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-valencia-orange dark:text-valencia-yellow">Desarrollador del Año</h3>
-            <p class="text-gray-700 dark:text-gray-300">Reconocimiento por excelencia y contribución excepcional en [Empresa].</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Sección Testimonios - como comentaristas deportivos -->
-    <div class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12 text-valencia-orange dark:text-valencia-yellow">Lo Que Dicen del Jugador</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Testimonio 1 -->
-        <div class="bg-valencia-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-valencia-orange dark:border-valencia-orange-600">
-          <div class="mb-4 relative">
-            <div class="absolute -top-3 -left-3 text-4xl text-gray-200 dark:text-gray-700">❝</div>
-            <p class="text-gray-700 dark:text-gray-300 italic relative z-10 pl-4">
-              Carlos es un desarrollador excepcional. Su capacidad para entender los requisitos del proyecto
-              y convertirlos en soluciones efectivas es impresionante. Definitivamente volveremos a trabajar con él.
-            </p>
-          </div>
-          <div class="flex items-center mt-4">
-            <div class="w-12 h-12 bg-valencia-orange/20 dark:bg-valencia-orange/10 rounded-full flex items-center justify-center text-valencia-orange dark:text-valencia-orange-400">
-              JD
-            </div>
-            <div class="ml-4">
-              <div class="font-bold text-gray-800 dark:text-gray-200">Juan Díaz</div>
-              <div class="text-gray-500 dark:text-gray-400 text-sm">CEO de TechCompany</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonio 2 -->
-        <div class="bg-valencia-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-valencia-yellow dark:border-valencia-yellow-600">
-          <div class="mb-4 relative">
-            <div class="absolute -top-3 -left-3 text-4xl text-gray-200 dark:text-gray-700">❝</div>
-            <p class="text-gray-700 dark:text-gray-300 italic relative z-10 pl-4">
-              Trabajar con Carlos ha sido una experiencia increíble. Su atención al detalle y su enfoque
-              en la experiencia de usuario han marcado la diferencia en nuestro proyecto.
-            </p>
-          </div>
-          <div class="flex items-center mt-4">
-            <div class="w-12 h-12 bg-valencia-yellow/20 dark:bg-valencia-yellow/10 rounded-full flex items-center justify-center text-valencia-yellow-700 dark:text-valencia-yellow-500">
-              MR
-            </div>
-            <div class="ml-4">
-              <div class="font-bold text-gray-800 dark:text-gray-200">María Rodríguez</div>
-              <div class="text-gray-500 dark:text-gray-400 text-sm">Project Manager en StartupX</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </MainLayout>

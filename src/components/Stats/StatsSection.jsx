@@ -1,11 +1,10 @@
-// src/components/Stats/StatsSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function StatsSection() {
   const stats = [
     { label: 'Proyectos Completados', value: '3+', icon: '🏆' },
-    { label: 'Años de Experiencia', value: '2+', icon: '⏱️' },
+    { label: 'Años de Experiencia', value: '1+', icon: '⏱️' },
     { label: 'Horas de Código', value: '4000+', icon: '💻' },
   ];
 

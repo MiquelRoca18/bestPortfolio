@@ -1,5 +1,4 @@
 ---
-// src/layouts/MainLayout.astro
 import '../styles/global.css';
 
 export interface Props {
@@ -46,7 +45,7 @@ const currentYear = new Date().getFullYear();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>{title} | El Futbolista del Código</title>
+    <title>{title} | El 10 del Código</title>
   </head>
   <body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-valencia-black dark:to-gray-900 min-h-screen font-montserrat text-gray-800 dark:text-valencia-white">
     <div class="relative">
@@ -63,7 +62,7 @@ const currentYear = new Date().getFullYear();
           <nav class="flex justify-between items-center h-16">
             <a href="/" class="text-xl md:text-2xl font-bold flex items-center gap-2 hover:opacity-90 transition">
               <img src="/img/valencia-cf-logo.png" alt="Escudo del Valencia CF" class="w-8 h-8 object-contain" />
-              <span class="font-poppins tracking-tight">El Futbolista del Código</span>
+              <span class="font-poppins tracking-tight">El 10 del Código</span>
             </a>
             
             <div class="hidden md:flex items-center space-x-1">
@@ -108,7 +107,7 @@ const currentYear = new Date().getFullYear();
               </button>
             </div>
             
-            <!-- Menú móvil - se implementará con JS -->
+            <!-- Menú móvil  -->
             <div class="md:hidden flex items-center">
               <!-- Botón de cambio de modo oscuro para móvil -->
               <button id="theme-toggle-mobile" class="p-2 rounded-full bg-valencia-white dark:bg-valencia-yellow text-valencia-orange dark:text-valencia-black hover:bg-gray-100 dark:hover:bg-valencia-yellow-400 transition-colors duration-300 focus:outline-none mr-2">
@@ -120,7 +119,7 @@ const currentYear = new Date().getFullYear();
                 </svg>
               </button>
               
-              <button class="text-valencia-white p-2 focus:outline-none">
+              <button id="mobile-menu-button" class="text-valencia-white p-2 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
@@ -130,7 +129,34 @@ const currentYear = new Date().getFullYear();
         </div>
       </header>
       
-      <!-- Contenido principal con shadows mejorados -->
+      <!-- Menú móvil desplegable -->
+      <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-valencia-orange-900 dark:bg-valencia-black transform translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl">
+        <div class="flex flex-col h-full">
+          <!-- Header del menú móvil -->
+          <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-valencia-white p-2 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Enlaces del menú -->
+          <div class="flex-1 px-4 py-2 space-y-1">
+            <a href="/" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Inicio</a>
+            <a href="/about" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Perfil</a>
+            <a href="/education" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Academia</a>
+            <a href="/experience" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Partidos</a>
+            <a href="/projects" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Trofeos</a>
+            <a href="/skills" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Jugadas</a>
+            <a href="/contact" class="block px-4 py-3 rounded-lg text-base font-medium text-valencia-white hover:bg-valencia-orange-700 dark:hover:bg-valencia-orange-900 transition duration-200">Fichajes</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay para el menú móvil -->
+      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+      
       <main class="relative z-10 min-h-[calc(100vh-13rem)]">
         <slot />
       </main>
@@ -142,25 +168,22 @@ const currentYear = new Date().getFullYear();
             <div class="mb-6 md:mb-0">
               <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
                 <img src="/img/valencia-cf-logo.png" alt="Escudo del Valencia CF" class="w-8 h-8 object-contain" />
-                <span class="font-poppins font-bold">El Futbolista del Código</span>
+                <span class="font-poppins font-bold">El 10 del Código</span>
               </div>
-              <p class="text-sm text-gray-300 text-center md:text-left">Combinando la pasión por el código con la estrategia del fútbol</p>
+              <p class="text-sm text-gray-300 text-center md:text-left">Combinando mi gusto por el futbol con el trabajo de programador que busco</p>
             </div>
             
             <div class="flex flex-col items-center md:items-end">
               <div class="flex space-x-4 mb-4">
                 <!-- Iconos de redes sociales -->
-                <a href="#" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
+                <a href="https://github.com/MiquelRoca18" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
                   <Fragment set:html={socialIcons.github} />
                 </a>
-                <a href="#" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
+                <a href="https://www.linkedin.com/in/miquel-roca-mascaros/" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
                   <Fragment set:html={socialIcons.linkedin} />
                 </a>
-                <a href="#" class="text-gray-300 hover:text-valencia-yellow transition-colors duration-300">
-                  <Fragment set:html={socialIcons.twitter} />
-                </a>
               </div>
-              <p class="text-xs text-gray-400">&copy; {currentYear} El Futbolista del Código</p>
+              <p class="text-xs text-gray-400">&copy; {currentYear} El 10 del Código</p>
             </div>
           </div>
         </div>
@@ -197,6 +220,35 @@ const currentYear = new Date().getFullYear();
         }
         if (themeToggleMobile) {
           themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+
+        // Manejo del menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function openMobileMenu() {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenuOverlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+          mobileMenu.classList.add('translate-x-full');
+          mobileMenuOverlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        if (mobileMenuButton && mobileMenu && mobileMenuOverlay) {
+          mobileMenuButton.addEventListener('click', openMobileMenu);
+          closeMobileMenuButton?.addEventListener('click', closeMobileMenu);
+          mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+          // Cerrar el menú al hacer clic en un enlace
+          mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+          });
         }
       });
     </script>

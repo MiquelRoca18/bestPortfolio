@@ -1,8 +1,7 @@
-// src/components/Trophies/Trophy.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Trophy({ title, category, description, link, technologies = [] }) {
+export default function Trophy({ title, category, description, githubLink, projectLink, technologies = [] }) {
   return (
     <motion.div 
       className="trophy-item bg-valencia-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1 border border-valencia-yellow/20 dark:border-valencia-orange/20"
@@ -37,16 +36,36 @@ export default function Trophy({ title, category, description, link, technologie
           </div>
         )}
         
-        {link && (
-          <a 
-            href={link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block text-valencia-orange font-medium text-sm hover:text-valencia-red dark:text-valencia-yellow dark:hover:text-valencia-orange-400 transition-colors"
-          >
-            Ver proyecto →
-          </a>
-        )}
+        <div className="flex flex-wrap gap-3 mt-4">
+          {githubLink && (
+            <motion.a 
+              href={githubLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center px-4 py-2 bg-valencia-orange/10 dark:bg-valencia-orange-900/20 text-valencia-orange dark:text-valencia-orange-300 rounded-lg overflow-hidden transition-all hover:bg-valencia-orange/20 dark:hover:bg-valencia-orange-900/30"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-valencia-orange/0 via-valencia-orange/10 to-valencia-orange/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+              <span className="mr-2 text-lg">📂</span>
+              <span className="font-medium">Repositorio</span>
+            </motion.a>
+          )}
+          {projectLink && (
+            <motion.a 
+              href={projectLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center px-4 py-2 bg-valencia-yellow/10 dark:bg-valencia-yellow-900/20 text-valencia-yellow-800 dark:text-valencia-yellow-300 rounded-lg overflow-hidden transition-all hover:bg-valencia-yellow/20 dark:hover:bg-valencia-yellow-900/30"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-valencia-yellow/0 via-valencia-yellow/10 to-valencia-yellow/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+              <span className="mr-2 text-lg">🌐</span>
+              <span className="font-medium">Ver Proyecto</span>
+            </motion.a>
+          )}
+        </div>
       </div>
     </motion.div>
   );

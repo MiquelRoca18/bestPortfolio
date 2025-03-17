@@ -1,5 +1,4 @@
 ---
-// src/pages/index.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroSection from '../components/Hero/HeroSection';
 import StatsSection from '../components/Stats/StatsSection';
@@ -26,26 +25,29 @@ import TrophyCase from '../components/Trophies/TrophyCase';
         client:visible 
         projects={[
           {
-            title: 'Plataforma E-learning',
+            title: 'Sistema ERP Construcción',
             category: 'Aplicación Web',
-            description: 'Desarrollo de una plataforma completa para cursos online con sistema de pagos, gestión de contenido y analíticas en tiempo real.',
-            link: '#',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API']
+            description: 'ERP para construcción que centraliza proyectos, recursos, finanzas y personal. Optimiza procesos y decisiones, escalable y personalizable. Ideal para cualquier proyecto.',
+            githubLink: 'https://github.com/MiquelRoca18/sistema-erp-construccion',
+            projectLink: 'https://sistema-erp-construccion-1.onrender.com/',
+            technologies: ['Vue', 'PHP', 'MySQL', 'Tailwind CSS']
           },
           {
-            title: 'App de Gestión Financiera',
-            category: 'Aplicación Móvil',
-            description: 'Aplicación móvil para gestión de finanzas personales con visualización de datos, seguimiento de presupuesto y alertas personalizadas.',
-            link: '#',
-            technologies: ['React Native', 'Firebase', 'Redux']
-          },
+            title: 'Lanzamientos SpaceX',
+            category: 'Sitio Web',
+            description: 'Sitio web en Astro que muestra lanzamientos de SpaceX a través de su API, con número de vuelo, parche, descripción y estado, y navegación por paginación.',
+            githubLink: 'https://github.com/MiquelRoca18/astroSpaceX',
+            projectLink: 'https://astrospacex.netlify.app/',
+            technologies: ['Astro', 'API SpaceX', 'JavaScript']
+          } ,
           {
-            title: 'Dashboard Empresarial',
-            category: 'Plataforma SaaS',
-            description: 'Dashboard interactivo para análisis de datos empresariales con múltiples integraciones y reportes personalizados.',
-            link: '#',
-            technologies: ['Vue.js', 'Express', 'PostgreSQL', 'Docker']
-          },
+            title: 'Buscador de Películas',
+            category: 'Aplicación Web',
+            description: 'Buscador de películas desarrollado en React. Permite buscar por cualquier cadena de texto dentro de un catálogo de películas en un archivo JSON y ordenarlas alfabéticamente.',
+            githubLink: 'https://github.com/MiquelRoca18/react-buscador-peliculas',
+            projectLink: 'https://reeaactflixx.netlify.app/',
+            technologies: ['React', 'JavaScript', 'JSON']
+          }
         ]}
       />
     </div>
@@ -54,15 +56,15 @@ import TrophyCase from '../components/Trophies/TrophyCase';
   <!-- Sección CTA - Contacto -->
   <section class="py-20 bg-gradient-to-br from-valencia-orange to-valencia-red-700 dark:from-valencia-orange-800 dark:to-valencia-red-900 text-valencia-white">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold mb-6">¿Listo para ficharme en tu equipo?</h2>
+      <h2 class="text-4xl font-bold mb-6">¿Soy el perfil de jugador que buscas?</h2>
       <p class="max-w-2xl mx-auto text-xl mb-8 text-valencia-white/90 dark:text-valencia-white/80">
-        Si buscas un desarrollador que aporte valor desde el primer minuto, ¡hablemos!
+        Si buscas un jugador con mis habilidades y ganas de crecer, no dudes en hablarme.
       </p>
       <a 
         href="/contact" 
         class="inline-block bg-valencia-white text-valencia-orange dark:bg-valencia-yellow dark:text-valencia-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-valencia-yellow hover:text-valencia-black dark:hover:bg-valencia-white dark:hover:text-valencia-orange transition-all transform hover:-translate-y-1"
       >
-        Contactar Ahora
+        Contactar
       </a>
     </div>
   </section>

@@ -1,7 +1,7 @@
-// src/components/Hero/HeroSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import PHPIcon from '../../assets/svgsJSX/PHPIcon';
+import TailwindIcon from '../../assets/svgsJSX/TailwindIcon';
 export default function HeroSection() {
   return (
     <div className="relative overflow-hidden">
@@ -25,12 +25,11 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-gray-800 dark:text-valencia-white leading-tight">
-              El <span className="text-valencia-orange dark:text-valencia-yellow">Futbolista</span> del Código
+              El <span className="text-valencia-orange dark:text-valencia-yellow">10</span> del código
             </h1>
             
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Transformando desafíos de desarrollo en victorias mediante 
-              estrategia, trabajo en equipo y excelencia técnica.
+            Enfoco el desarrollo como un partido a ganar, con trabajo en equipo y aportando valor con mis habilidades.            
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
@@ -66,7 +65,7 @@ export default function HeroSection() {
               
               {/* Tarjeta del jugador premium */}
               <div className="relative bg-gradient-to-br from-valencia-orange to-valencia-red-700 dark:from-valencia-black dark:to-valencia-orange-900 rounded-2xl overflow-hidden shadow-2xl border-2 border-valencia-yellow p-6 text-white w-80">
-                <div className="absolute top-0 right-0 bg-valencia-yellow text-valencia-black font-bold px-3 py-1 rounded-bl-lg text-sm tracking-wide">ELITE</div>
+                <div className="absolute top-0 right-0 bg-valencia-yellow text-valencia-black font-bold px-3 py-1 rounded-bl-lg text-sm tracking-wide">CANTERANO</div>
                 
                 <div className="rounded-full bg-white/10 h-32 w-32 mx-auto mb-6 flex items-center justify-center overflow-hidden border-2 border-white/30">
                   <img 
@@ -77,21 +76,21 @@ export default function HeroSection() {
                 </div>
                 
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold mb-1">Carlos Rodríguez</h3>
-                  <p className="text-white/70 text-sm">Desarrollador Full-Stack #01</p>
+                  <h3 className="text-xl text-white font-bold mb-1">Miquel Roca</h3>
+                  <p className="text-white/70 text-sm">Desarrollador Full-Stack</p>
                 </div>
                 
                 <div className="grid grid-cols-3 gap-1 text-center">
                   <div className="bg-white/10 p-2 rounded">
-                    <div className="text-xl font-bold">94</div>
+                    <div className="text-xl font-bold">74</div>
                     <div className="text-xs opacity-70">CÓDIGO</div>
                   </div>
                   <div className="bg-white/10 p-2 rounded">
-                    <div className="text-xl font-bold">92</div>
+                    <div className="text-xl font-bold">70</div>
                     <div className="text-xs opacity-70">DISEÑO</div>
                   </div>
                   <div className="bg-white/10 p-2 rounded">
-                    <div className="text-xl font-bold">95</div>
+                    <div className="text-xl font-bold">85</div>
                     <div className="text-xs opacity-70">EQUIPO</div>
                   </div>
                 </div>
@@ -103,7 +102,7 @@ export default function HeroSection() {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
               >
-                ⚛️
+                <PHPIcon />
               </motion.div>
               
               <motion.div 
@@ -111,7 +110,7 @@ export default function HeroSection() {
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse" }}
               >
-                🚀
+                <TailwindIcon />
               </motion.div>
             </div>
           </motion.div>

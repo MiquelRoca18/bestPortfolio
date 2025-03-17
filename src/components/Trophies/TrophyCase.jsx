@@ -1,11 +1,10 @@
-// src/components/Trophies/TrophyCase.jsx
 import React from 'react';
 import Trophy from './Trophy';
 import { motion } from 'framer-motion';
 
 export default function TrophyCase({ projects }) {
   return (
-    <div className="py-12 bg-gray-50 dark:bg-valencia-black/95">
+    <div className="py-12">
       <motion.div 
         className="text-center mb-12"
         initial={{ opacity: 0, y: -20 }}
@@ -14,8 +13,7 @@ export default function TrophyCase({ projects }) {
       >
         <h2 className="text-4xl font-bold mb-3 text-valencia-orange dark:text-valencia-yellow">Trofeos Ganados</h2>
         <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-          Estos son los proyectos clave en mi carrera como futbolista del código, cada uno 
-          representando una victoria y conocimientos adquiridos en el campo del desarrollo.
+          Estos son los proyectos realizados durante mi formación en la cantera, donde he aprendido mucho y cumplido con éxito los objetivos propuestos.
         </p>
       </motion.div>
       
@@ -26,7 +24,8 @@ export default function TrophyCase({ projects }) {
             title={project.title} 
             category={project.category}
             description={project.description}
-            link={project.link}
+            githubLink={project.githubLink}
+            projectLink={project.projectLink}
             technologies={project.technologies}
           />
         ))}
@@ -44,7 +43,7 @@ export default function TrophyCase({ projects }) {
             <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-valencia-orange dark:bg-valencia-orange-600 rounded-full flex items-center justify-center text-xs text-valencia-white font-bold">+</div>
           </div>
         </motion.div>
-        <p className="mt-4 text-valencia-orange-600 dark:text-valencia-orange-400 italic font-medium">¡Y más por venir!</p>
+        <p className="mt-4 text-valencia-orange-600 dark:text-valencia-orange-400 italic font-medium">Y más en desarrollo...</p>
       </div>
     </div>
   );

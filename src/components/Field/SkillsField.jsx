@@ -9,7 +9,7 @@ import GitIcon from '../../assets/svgsJSX/GitIcon';
 import VueIcon from '../../assets/svgsJSX/VueIcon';
 import JavaIcon from '../../assets/svgsJSX/JavaIcon';
 
-// Clase para representar una chapa (habilidad)
+// Clase para representar una Skill
 class Skill {
   constructor(id, name, icon, color, details, category, x, y, radius = 30) {
     this.id = id;
@@ -20,15 +20,15 @@ class Skill {
     this.category = category;
     this.x = x;
     this.y = y;
-    this.initialX = x; // Guardar posición inicial para reset
-    this.initialY = y; // Guardar posición inicial para reset
+    this.initialX = x; 
+    this.initialY = y; 
     this.radius = radius;
     this.vx = 0;
     this.vy = 0;
     this.isMoving = false;
-    this.friction = 0.97; // Fricción
-    this.restitution = 0.8; // Rebote
-    this.mass = radius * radius * 0.01; // Masa proporcional al tamaño
+    this.friction = 0.97; 
+    this.restitution = 0.8; 
+    this.mass = radius * radius * 0.01; 
   }
 
   update(fieldWidth, fieldHeight) {
@@ -96,7 +96,7 @@ class Skill {
 
 export default function SkillsField() {
   const [skills, setSkills] = useState([]);
-  const [initialSkillsData, setInitialSkillsData] = useState([]); // Almacena las posiciones iniciales
+  const [initialSkillsData, setInitialSkillsData] = useState([]); 
   const [activeSkill, setActiveSkill] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -104,7 +104,7 @@ export default function SkillsField() {
   const [currentDragPos, setCurrentDragPos] = useState({ x: 0, y: 0 });
   const [showArrow, setShowArrow] = useState(false);
   const [fieldDimensions, setFieldDimensions] = useState({ width: 0, height: 0 });
-  const [gameStarted, setGameStarted] = useState(false); // Indicador de que el juego ha comenzado
+  const [gameStarted, setGameStarted] = useState(false); 
   
   const fieldRef = useRef(null);
   const animationRef = useRef(null);
@@ -552,7 +552,7 @@ export default function SkillsField() {
         // Usar el ángulo espejo para el lanzamiento
         newSkills[skillIndex].launch(power, mirrorAngle);
         setSkills(newSkills);
-        setGameStarted(true); // Marcar que el juego ha comenzado
+        setGameStarted(true); 
       }
     }
     
@@ -589,14 +589,14 @@ export default function SkillsField() {
     // Determinar color basado en la potencia
     let arrowColor;
     if (power < 0.3) {
-      arrowColor = '#4CAF50'; // Verde para potencia baja
+      arrowColor = '#4CAF50'; 
     } else if (power < 0.7) {
-      arrowColor = '#FFC107'; // Amarillo para potencia media
+      arrowColor = '#FFC107'; 
     } else {
-      arrowColor = '#F44336'; // Rojo para potencia alta
+      arrowColor = '#F44336'; 
     }
     
-    // Puntos para la punta de flecha (ahora en la dirección correcta)
+    // Puntos para la punta de flecha
     const headLength = 15 + power * 5;
     const headWidth = headLength * 0.8;
     const angle90 = mirrorAngle + Math.PI/2;
@@ -655,8 +655,7 @@ export default function SkillsField() {
         Mis Habilidades Técnicas
       </h2>
       <p className="text-center max-w-xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
-        Como desarrollador, domino varias tecnologías que me permiten crear soluciones completas y eficientes.
-        Haz clic y arrastra para lanzar las habilidades como chapas en un partido de fútbol.
+        Cuento con conocimientos en backend y frontend, para poder adaptarme como un todoterreno y aportar valor en cualquier posición del campo.
       </p>
       
       {/* Botón de reset */}
@@ -691,7 +690,7 @@ export default function SkillsField() {
       >
         <FieldSVG />
         
-        {/* Renderizar las habilidades (chapas) */}
+        {/* Renderizar las habilidades */}
         {skills.map((skill) => (
           <div 
             key={skill.id}

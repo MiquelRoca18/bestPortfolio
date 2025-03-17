@@ -1,5 +1,4 @@
 ---
-// src/pages/about.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import PlayerCard from '../components/Player/PlayerCard';
 ---
@@ -9,7 +8,7 @@ import PlayerCard from '../components/Player/PlayerCard';
     <div class="text-center max-w-3xl mx-auto mb-12">
       <h1 class="text-5xl font-bold mb-6 text-valencia-orange dark:text-valencia-yellow">Mi Perfil de Jugador</h1>
       <p class="text-xl text-gray-700 dark:text-gray-300">
-        Conoce mi historia, mis valores y cómo me he convertido en el futbolista del 
+        Conoce mi historia, mis valores y cómo me he convertido en el 10 del 
         código que soy ahora.
       </p>
     </div>
@@ -19,14 +18,14 @@ import PlayerCard from '../components/Player/PlayerCard';
       <div class="lg:w-1/3 flex justify-center">
         <PlayerCard 
           client:load
-          name="Carlos Rodríguez"
-          position="DEV"
-          rating="93"
+          name="Miquel Roca"
+          position="CANTERANO"
+          rating="76"
           image="/public/img/fotoCv1.webp"
           skills={[
-            { value: 95, label: 'CÓDIGO' },
-            { value: 92, label: 'DISEÑO' },
-            { value: 94, label: 'EQUIPO' }
+            { value: 74, label: 'CÓDIGO' },
+            { value: 70, label: 'DISEÑO' },
+            { value: 85, label: 'EQUIPO' }
           ]}
         />
       </div>
@@ -44,15 +43,15 @@ import PlayerCard from '../components/Player/PlayerCard';
               <ul class="space-y-2">
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-orange dark:bg-valencia-orange-600 flex items-center justify-center text-valencia-white text-xs">✓</span>
-                  <span class="text-gray-700 dark:text-gray-300"><strong>Nombre:</strong> Carlos Rodríguez</span>
+                  <span class="text-gray-700 dark:text-gray-300"><strong>Nombre:</strong> Miquel Roca</span>
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-orange dark:bg-valencia-orange-600 flex items-center justify-center text-valencia-white text-xs">✓</span>
-                  <span class="text-gray-700 dark:text-gray-300"><strong>Edad:</strong> 28 años</span>
+                  <span class="text-gray-700 dark:text-gray-300"><strong>Edad:</strong> 23 años</span>
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-orange dark:bg-valencia-orange-600 flex items-center justify-center text-valencia-white text-xs">✓</span>
-                  <span class="text-gray-700 dark:text-gray-300"><strong>Ubicación:</strong> Madrid, España</span>
+                  <span class="text-gray-700 dark:text-gray-300"><strong>Ubicación:</strong> Alcantera del Xuquer, Valencia</span>
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-orange dark:bg-valencia-orange-600 flex items-center justify-center text-valencia-white text-xs">✓</span>
@@ -66,11 +65,11 @@ import PlayerCard from '../components/Player/PlayerCard';
               <ul class="space-y-2">
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-yellow dark:bg-valencia-yellow-600 flex items-center justify-center text-valencia-black text-xs">★</span>
-                  <span class="text-gray-700 dark:text-gray-300">Código limpio y eficiente</span>
+                  <span class="text-gray-700 dark:text-gray-300">Capacidad para trabajar bajo presión</span>
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-yellow dark:bg-valencia-yellow-600 flex items-center justify-center text-valencia-black text-xs">★</span>
-                  <span class="text-gray-700 dark:text-gray-300">Soluciones creativas a problemas complejos</span>
+                  <span class="text-gray-700 dark:text-gray-300">Enfoque orientado a resultados</span>
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-5 h-5 rounded-full bg-valencia-yellow dark:bg-valencia-yellow-600 flex items-center justify-center text-valencia-black text-xs">★</span>
@@ -89,15 +88,10 @@ import PlayerCard from '../components/Player/PlayerCard';
         <div class="bg-gradient-to-r from-valencia-orange to-valencia-red-600 dark:from-valencia-orange-800 dark:to-valencia-red-800 text-valencia-white rounded-xl shadow-lg p-6">
           <h3 class="font-bold text-xl mb-4 text-valencia-white">Mi Historia</h3>
           <p class="mb-4">
-            Mi pasión por el desarrollo comenzó hace más de 8 años cuando creé mi primera página web. 
-            Desde entonces, he evolucionado constantemente, aprendiendo nuevas tecnologías y mejorando 
-            mis habilidades para convertirme en un desarrollador versátil y efectivo.
+            La decisión de querer dedicarme a la programación surgió a partir de pequeños proyectos de Arduino en el instituto. Ahí descubrí que me gustaba desarrollar ideas y aprender cosas nuevas. Más tarde, estudié un grado superior en desarrollo de aplicaciones web, donde adquirí nuevos conocimientos y mejoré mis habilidades para ofrecer soluciones a problemas reales.
           </p>
           <p>
-            Como el futbolista del código, veo cada proyecto como un partido donde la estrategia, 
-            el trabajo en equipo y la excelencia técnica son fundamentales para alcanzar el éxito. 
-            Mi enfoque combina creatividad, precisión y una mentalidad orientada a resultados.
-          </p>
+            Actualmente, me enfoco en aprender y fortalecer nuevas habilidades a través de proyectos personales, con el objetivo de mejorar mi perfil y conseguir una oportunidad que me permita crecer en este sector.          </p>
         </div>
       </div>
     </div>
@@ -116,7 +110,7 @@ import PlayerCard from '../components/Player/PlayerCard';
             </div>
             <h3 class="text-xl font-bold text-center mb-3 text-valencia-orange dark:text-valencia-yellow">Trabajo en Equipo</h3>
             <p class="text-gray-700 dark:text-gray-300 text-center">
-              Creo en el poder de la colaboración y la comunicación efectiva para lograr resultados excepcionales.
+              Me gusta trabajar en equipo y considero que es fundamental para poder lograr resultados excepcionales.
             </p>
           </div>
         </div>
@@ -130,7 +124,7 @@ import PlayerCard from '../components/Player/PlayerCard';
             </div>
             <h3 class="text-xl font-bold text-center mb-3 text-valencia-orange dark:text-valencia-yellow">Mejora Continua</h3>
             <p class="text-gray-700 dark:text-gray-300 text-center">
-              Busco constantemente aprender y mejorar mis habilidades para ofrecer soluciones de mayor calidad.
+              Constantemente intento aprender y mejorar mis habilidades para ofrecer soluciones de mayor calidad.
             </p>
           </div>
         </div>
@@ -149,16 +143,16 @@ import PlayerCard from '../components/Player/PlayerCard';
           </div>
         </div>
         
-        <!-- Valor 4 -->
+        <!-- Valor 4 - Cambiado de Creatividad a Capacidad para trabajar bajo presión -->
         <div class="bg-valencia-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition hover:shadow-xl hover:-translate-y-1">
           <div class="h-2 bg-valencia-orange-600"></div>
           <div class="p-6">
             <div class="w-14 h-14 rounded-full bg-valencia-orange-200 dark:bg-valencia-orange-800/30 flex items-center justify-center mb-4 mx-auto">
-              <span class="text-2xl">💡</span>
+              <span class="text-2xl">⏱️</span>
             </div>
-            <h3 class="text-xl font-bold text-center mb-3 text-valencia-orange dark:text-valencia-yellow">Creatividad</h3>
+            <h3 class="text-xl font-bold text-center mb-3 text-valencia-orange dark:text-valencia-yellow">Capacidad para trabajar bajo presión</h3>
             <p class="text-gray-700 dark:text-gray-300 text-center">
-              Aporto soluciones innovadoras y un enfoque creativo para resolver problemas complejos.
+              Mantengo la calma y la eficiencia incluso en situaciones de alta presión y plazos ajustados.
             </p>
           </div>
         </div>

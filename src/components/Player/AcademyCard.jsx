@@ -37,36 +37,20 @@ export function AcademyList() {
     {
       id: 1,
       level: "1",
-      title: "Ingeniería Informática",
-      institution: "Universidad Tecnológica Nacional",
-      year: "2014-2018",
-      description: "Formación completa en ciencias de la computación, algoritmos, estructuras de datos y desarrollo de software. Especialización en desarrollo web y aplicaciones móviles."
+      title: "Desarrollo de Aplicaciones Web",
+      institution: "IES Dr Lluis Simarro",
+      year: "2021-2024",
+      description: "Formación en desarrollo de software, con énfasis en tecnologías web y móviles. Incluye programación, estructuras de datos, y creación de aplicaciones interactivas y funcionales."
     },
     {
       id: 2,
       level: "2",
-      title: "Máster en Desarrollo Web Full Stack",
-      institution: "Tech Institute",
-      year: "2018-2019",
-      description: "Especialización en tecnologías web modernas, incluyendo frontend con React, backend con Node.js, bases de datos y despliegue en la nube."
+      title: "Bachiller Científico",
+      institution: "IES Cárcer",
+      year: "2014-2020",
+      description: "Formación básica en ciencias e ingeniería, incluyendo física, matemáticas, química y dibujo técnico, con un enfoque preparatorio para estudios en ingeniería y áreas científicas."
     },
-    {
-      id: 3,
-      level: "3",
-      title: "Certificación en DevOps y CI/CD",
-      institution: "Cloud Academy",
-      year: "2020",
-      description: "Formación especializada en metodologías DevOps, integración continua, entrega continua y despliegue automatizado con herramientas como Docker, Jenkins y GitHub Actions."
-    },
-    {
-      id: 4,
-      level: "4",
-      title: "Bootcamp de Data Science",
-      institution: "Data Learning Institute",
-      year: "2021",
-      description: "Formación intensiva en análisis de datos, visualización y principios de machine learning aplicados al desarrollo de aplicaciones web inteligentes."
-    }
-  ];
+  ];  
 
   return (
     <div className="max-w-4xl mx-auto">
