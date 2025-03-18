@@ -5,7 +5,7 @@ export default function StatsSection() {
   const stats = [
     { label: 'Proyectos Completados', value: '3+', icon: '🏆' },
     { label: 'Años de Experiencia', value: '1+', icon: '⏱️' },
-    { label: 'Horas de Código', value: '4000+', icon: '💻' },
+    { label: 'Horas de Código', value: '2500+', icon: '💻' },
   ];
 
   return (
